@@ -1147,7 +1147,6 @@
 					"../../externals/macosx/lua-5.2.3",
 					"../../externals/macosx/portaudio-19",
 					"../../externals/macosx/portmidi-217",
-					/Users/jamie/Documents/IntegraLive/libIntegra/externals/extra/copy,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				OTHER_CFLAGS = (
@@ -1205,7 +1204,6 @@
 					"../../externals/macosx/lua-5.2.3",
 					"../../externals/macosx/portaudio-19",
 					"../../externals/macosx/portmidi-217",
-					/Users/jamie/Documents/IntegraLive/libIntegra/externals/extra/copy,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				OTHER_CFLAGS = (
