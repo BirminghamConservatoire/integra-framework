@@ -1,9 +1,0 @@
-include Make.config
-TEMPLATE=template.pandoc
-PANDOC=pandoc --include-in-header=header.html --template=../$(TEMPLATE) --toc --toc-depth=4 --standalone --ascii 
-
-all:
-	$(PANDOC) $(NAME).md > $(NAME).htm
-
-clean:
-	rm -f *.htm
