@@ -23,6 +23,8 @@
 		7D2131F01892B7FD00C270A7 /* vexp_if.c in Sources */ = {isa = PBXBuildFile; fileRef = 7D2131E71892B7FD00C270A7 /* vexp_if.c */; settings = {COMPILER_FLAGS = "-w"; }; };
 		7D2131F71892B80A00C270A7 /* fiddle~.c in Sources */ = {isa = PBXBuildFile; fileRef = 7D2131F31892B80A00C270A7 /* fiddle~.c */; settings = {COMPILER_FLAGS = "-w"; }; };
 		7D45816818DC7179006F0D60 /* modules in Resources */ = {isa = PBXBuildFile; fileRef = 7D45816718DC7179006F0D60 /* modules */; };
+		7D54F00C2118E5DE008D59D7 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D54F00B2118E5DE008D59D7 /* libz.tbd */; };
+		7D54F00E2118E5EB008D59D7 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D54F00D2118E5EB008D59D7 /* libxml2.tbd */; };
 		7D8451DF187DB8CB008639D2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7D8451DD187DB8CB008639D2 /* InfoPlist.strings */; };
 		7D845213187DBACF008639D2 /* command_result.h in Headers */ = {isa = PBXBuildFile; fileRef = 7D8451FF187DBACF008639D2 /* command_result.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7D845214187DBACF008639D2 /* command_source.h in Headers */ = {isa = PBXBuildFile; fileRef = 7D845200187DBACF008639D2 /* command_source.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -209,6 +211,9 @@
 		7D2131F41892B80A00C270A7 /* GNUmakefile.am */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GNUmakefile.am; sourceTree = "<group>"; };
 		7D2131F51892B80A00C270A7 /* makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = makefile; sourceTree = "<group>"; };
 		7D45816718DC7179006F0D60 /* modules */ = {isa = PBXFileReference; lastKnownFileType = folder; name = modules; path = ../../../modules; sourceTree = "<group>"; };
+		7D54F0092118E563008D59D7 /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
+		7D54F00B2118E5DE008D59D7 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		7D54F00D2118E5EB008D59D7 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		7D8451D1187DB8CB008639D2 /* Integra.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Integra.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D8451DC187DB8CB008639D2 /* Integra-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Integra-Info.plist"; sourceTree = "<group>"; };
 		7D8451DE187DB8CB008639D2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -375,6 +380,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D54F00E2118E5EB008D59D7 /* libxml2.tbd in Frameworks */,
+				7D54F00C2118E5DE008D59D7 /* libz.tbd in Frameworks */,
 				7DFC15A018D9CE5900CA083C /* AudioToolbox.framework in Frameworks */,
 				7DFC159E18D9CE4A00CA083C /* AudioUnit.framework in Frameworks */,
 				7D11074B189FC9E900B4A72E /* Carbon.framework in Frameworks */,
@@ -725,6 +732,9 @@
 		7DC426401F791C4E00334F11 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7D54F00D2118E5EB008D59D7 /* libxml2.tbd */,
+				7D54F00B2118E5DE008D59D7 /* libz.tbd */,
+				7D54F0092118E563008D59D7 /* libxml2.2.tbd */,
 				7DC426431F791C6C00334F11 /* libfftw3f.a */,
 				7DC426411F791C4E00334F11 /* libpd-osx.a */,
 			);
