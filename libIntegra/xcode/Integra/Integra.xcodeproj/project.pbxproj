@@ -25,6 +25,8 @@
 		7D45816818DC7179006F0D60 /* modules in Resources */ = {isa = PBXBuildFile; fileRef = 7D45816718DC7179006F0D60 /* modules */; };
 		7D54F00C2118E5DE008D59D7 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D54F00B2118E5DE008D59D7 /* libz.tbd */; };
 		7D54F00E2118E5EB008D59D7 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D54F00D2118E5EB008D59D7 /* libxml2.tbd */; };
+		7D54F01221199B5A008D59D7 /* tmpfileplus.c in Sources */ = {isa = PBXBuildFile; fileRef = 7D54F01021199B5A008D59D7 /* tmpfileplus.c */; };
+		7D54F01321199B5A008D59D7 /* tmpfileplus.h in Headers */ = {isa = PBXBuildFile; fileRef = 7D54F01121199B5A008D59D7 /* tmpfileplus.h */; };
 		7D8451DF187DB8CB008639D2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7D8451DD187DB8CB008639D2 /* InfoPlist.strings */; };
 		7D845213187DBACF008639D2 /* command_result.h in Headers */ = {isa = PBXBuildFile; fileRef = 7D8451FF187DBACF008639D2 /* command_result.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7D845214187DBACF008639D2 /* command_source.h in Headers */ = {isa = PBXBuildFile; fileRef = 7D845200187DBACF008639D2 /* command_source.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -214,6 +216,8 @@
 		7D54F0092118E563008D59D7 /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
 		7D54F00B2118E5DE008D59D7 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		7D54F00D2118E5EB008D59D7 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
+		7D54F01021199B5A008D59D7 /* tmpfileplus.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tmpfileplus.c; sourceTree = "<group>"; };
+		7D54F01121199B5A008D59D7 /* tmpfileplus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tmpfileplus.h; sourceTree = "<group>"; };
 		7D8451D1187DB8CB008639D2 /* Integra.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Integra.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D8451DC187DB8CB008639D2 /* Integra-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Integra-Info.plist"; sourceTree = "<group>"; };
 		7D8451DE187DB8CB008639D2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -489,6 +493,15 @@
 			path = "../libpd/pure-data/extra/fiddle~";
 			sourceTree = "<group>";
 		};
+		7D54F00F21199B5A008D59D7 /* tmpfileplus */ = {
+			isa = PBXGroup;
+			children = (
+				7D54F01021199B5A008D59D7 /* tmpfileplus.c */,
+				7D54F01121199B5A008D59D7 /* tmpfileplus.h */,
+			);
+			path = tmpfileplus;
+			sourceTree = "<group>";
+		};
 		7D8451C7187DB8CB008639D2 = {
 			isa = PBXGroup;
 			children = (
@@ -683,6 +696,7 @@
 				7DFC159718D9CD3100CA083C /* liblua.a */,
 				7DFC159918D9CD3D00CA083C /* libportaudio.a */,
 				7DFC159B18D9CD4900CA083C /* libportmidi_s.a */,
+				7D54F00F21199B5A008D59D7 /* tmpfileplus */,
 				7D2131B01892B7A300C270A7 /* extra */,
 				7D8453FA187DC023008639D2 /* minizip */,
 			);
@@ -785,6 +799,7 @@
 				7D845221187DBACF008639D2 /* server_lock.h in Headers */,
 				7D9FCFAB18AA575D00968601 /* documentation_mainpage.h in Headers */,
 				7D845222187DBACF008639D2 /* server_startup_info.h in Headers */,
+				7D54F01321199B5A008D59D7 /* tmpfileplus.h in Headers */,
 				7D975F6818DC515800EB28CB /* resample.hpp in Headers */,
 				7D845223187DBACF008639D2 /* server.h in Headers */,
 				7D845224187DBACF008639D2 /* string_helper.h in Headers */,
@@ -956,6 +971,7 @@
 				7D845287187DBBA5008639D2 /* connection_logic.cpp in Sources */,
 				7D9FCFA618AA574100968601 /* midi_input_filterer.cpp in Sources */,
 				7D8452A1187DBBA5008639D2 /* load_command.cpp in Sources */,
+				7D54F01221199B5A008D59D7 /* tmpfileplus.c in Sources */,
 				7DB8171018967D84005D7C1D /* portmidi_engine.cpp in Sources */,
 				7D8452AA187DBBA5008639D2 /* move_command.cpp in Sources */,
 				7D8452DB187DBBA5008639D2 /* value.cpp in Sources */,

@@ -33,6 +33,8 @@
 #define mkdir(x) mkdir(x, 0777)
 #endif
 
+#include "tmpfileplus.h"
+
 #include "module_manager.h"
 #include "scratch_directory.h"
 #include "interface_definition.h"
@@ -120,7 +122,6 @@ namespace integra_internal
 		unzFile unzip_file;
 		unz_file_info file_info;
 		char file_name[ CStringHelper::string_buffer_length ];
-		char *temporary_file_name;
 		FILE *temporary_file;
         string::size_type implementation_directory_length;
 		unsigned char *copy_buffer;
@@ -152,7 +153,7 @@ namespace integra_internal
 
 		do
 		{
-			temporary_file_name = NULL;
+			char temporary_file_name[FILENAME_MAX];
 			temporary_file = NULL;
 
 			if( unzGetCurrentFileInfo( unzip_file, &file_info, file_name, CStringHelper::string_buffer_length, NULL, 0, NULL, 0 ) != UNZ_OK )
@@ -166,16 +167,9 @@ namespace integra_internal
 				/* skip file not in node directory */
 				continue;
 			}
-
-			temporary_file_name = tempnam( m_server.get_scratch_directory().c_str(), "embedded_module" );
-			if( !temporary_file_name )
-			{
-				INTEGRA_TRACE_ERROR << "couldn't generate temporary filename";
-				CError = CError::FAILED;
-				continue;
-			}
-
-			temporary_file = fopen( temporary_file_name, "wb" );
+            
+            temporary_file = tmpfileplus_f(m_server.get_scratch_directory().c_str(), "embedded_module", temporary_file_name, sizeof(temporary_file_name), 0);
+            
 			if( !temporary_file )
 			{
 				INTEGRA_TRACE_ERROR << "couldn't open temporary file: " << temporary_file_name;
@@ -224,12 +218,6 @@ namespace integra_internal
 			if( temporary_file )
 			{
 				fclose( temporary_file );
-			}
-
-			if( temporary_file_name )
-			{
-				CFileHelper::delete_file( temporary_file_name );
-				delete[] temporary_file_name;
 			}
 
 			unzCloseCurrentFile( unzip_file );
