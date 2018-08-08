@@ -59,7 +59,7 @@
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>Default</InlineFunctionExpansion>
-      <AdditionalIncludeDirectories>../;visual_studio_includes;../externals/win32/iconv;../externals/win32/pthreads-win32/include;../externals/win32/lua-5.2.0/include;../externals/win32/libxml2-2.7.8.win32/include;../externals/win32/zlib-1.2.5/include;../externals/win32/fftw-3.3.3;../externals/flext/source;../externals/win32/libsndfile/include;../externals/boost;../externals/portaudio/include;../externals/portmidi/pm_common;../externals/libpd/libpd_wrapper;../externals/libpd/libpd_wrapper/util;../externals/libpd/pure-data/src;../externals/libpd/cpp;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../;visual_studio_includes;../externals/win32/iconv;../externals/win32/pthreads-win32/include;../externals/win32/lua-5.2.0/include;../externals/win32/libxml2-2.7.8.win32/include;../externals/win32/zlib-1.2.5/include;../externals/win32/fftw-3.3.3;../externals/flext/source;../externals/win32/libsndfile/include;../externals/boost;../externals/tmpfileplus;../externals/portaudio/include;../externals/portmidi/pm_common;../externals/libpd/libpd_wrapper;../externals/libpd/libpd_wrapper/util;../externals/libpd/pure-data/src;../externals/libpd/cpp;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;MSW;HAVE_STRUCT_TIMESPEC;_DEBUG;_WINDOWS;_USRDLL;LIBINTEGRA_EXPORTS;_CRT_SECURE_NO_WARNINGS;PD;FLEXT_THREADS;FLEXT_USE_SIMD;FLEXT_USE_CMEM;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -111,7 +111,7 @@ call copy_dependencies.bat ..\bin\Debug\ Debug
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>../;visual_studio_includes;../externals/win32/iconv;../externals/win32/pthreads-win32/include;../externals/win32/lua-5.2.0/include;../externals/win32/libxml2-2.7.8.win32/include;../externals/win32/zlib-1.2.5/include;../externals/win32/fftw-3.3.3;../externals/flext/source;../externals/boost;../externals/win32/libsndfile/include;../externals/portaudio/include;../externals/portmidi/pm_common;../externals/libpd/libpd_wrapper;../externals/libpd/libpd_wrapper/util;../externals/libpd/pure-data/src;../externals/libpd/cpp;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../;visual_studio_includes;../externals/win32/iconv;../externals/win32/pthreads-win32/include;../externals/win32/lua-5.2.0/include;../externals/win32/libxml2-2.7.8.win32/include;../externals/win32/zlib-1.2.5/include;../externals/win32/fftw-3.3.3;../externals/flext/source;../externals/tmpfileplus;../externals/boost;../externals/win32/libsndfile/include;../externals/portaudio/include;../externals/portmidi/pm_common;../externals/libpd/libpd_wrapper;../externals/libpd/libpd_wrapper/util;../externals/libpd/pure-data/src;../externals/libpd/cpp;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;MSW;HAVE_STRUCT_TIMESPEC;NDEBUG;_WINDOWS;_USRDLL;LIBINTEGRA_EXPORTS;_CRT_SECURE_NO_WARNINGS;PD;FLEXT_THREADS;FLEXT_ATTRIBUTES=1;FLEXT_USE_SIMD;FLEXT_USE_CMEM;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <PrecompiledHeader>
@@ -180,6 +180,7 @@ call copy_dependencies.bat ..\bin\Release\ Release
     <ClCompile Include="..\externals\minizip\zip.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Default</CompileAs>
     </ClCompile>
+    <ClCompile Include="..\externals\tmpfileplus\tmpfileplus.c" />
     <ClCompile Include="..\src\audio_engine.cpp" />
     <ClCompile Include="..\src\audio_settings_logic.cpp" />
     <ClCompile Include="..\src\command_source.cpp" />
@@ -270,6 +271,7 @@ call copy_dependencies.bat ..\bin\Release\ Release
     <ClInclude Include="..\externals\minizip\mztools.h" />
     <ClInclude Include="..\externals\minizip\unzip.h" />
     <ClInclude Include="..\externals\minizip\zip.h" />
+    <ClInclude Include="..\externals\tmpfileplus\tmpfileplus.h" />
     <ClInclude Include="..\src\audio_engine.h" />
     <ClInclude Include="..\src\audio_settings_logic.h" />
     <ClInclude Include="..\src\connection_logic.h" />

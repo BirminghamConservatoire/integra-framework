@@ -1,0 +1,69 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.15
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libIntegra", "libIntegra.vcxproj", "{FC44D9BF-1E20-44A7-B456-BEECA84DA30F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B94DB81C-B5FB-4984-99DC-5063C3793BFE} = {B94DB81C-B5FB-4984-99DC-5063C3793BFE}
+		{F34A2252-5B81-471A-AD86-F00984A0CA60} = {F34A2252-5B81-471A-AD86-F00984A0CA60}
+		{0A18A071-125E-442F-AFF7-A3F68ABECF99} = {0A18A071-125E-442F-AFF7-A3F68ABECF99}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dependencies", "Dependencies", "{18B6C134-83DE-4B74-B378-BFC1E0329630}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "portaudio", "..\externals\portaudio\build\msvc\portaudio.vcxproj", "{0A18A071-125E-442F-AFF7-A3F68ABECF99}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "portmidi-dynamic", "..\externals\portmidi\pm_dylib\portmidi-dynamic.vcxproj", "{F34A2252-5B81-471A-AD86-F00984A0CA60}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "flext", "..\externals\flext\flext.vcxproj", "{B94DB81C-B5FB-4984-99DC-5063C3793BFE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FC44D9BF-1E20-44A7-B456-BEECA84DA30F}.Debug|x64.ActiveCfg = Debug|Win32
+		{FC44D9BF-1E20-44A7-B456-BEECA84DA30F}.Debug|x86.ActiveCfg = Debug|Win32
+		{FC44D9BF-1E20-44A7-B456-BEECA84DA30F}.Debug|x86.Build.0 = Debug|Win32
+		{FC44D9BF-1E20-44A7-B456-BEECA84DA30F}.Release|x64.ActiveCfg = Release|Win32
+		{FC44D9BF-1E20-44A7-B456-BEECA84DA30F}.Release|x86.ActiveCfg = Release|Win32
+		{FC44D9BF-1E20-44A7-B456-BEECA84DA30F}.Release|x86.Build.0 = Release|Win32
+		{0A18A071-125E-442F-AFF7-A3F68ABECF99}.Debug|x64.ActiveCfg = Debug|x64
+		{0A18A071-125E-442F-AFF7-A3F68ABECF99}.Debug|x64.Build.0 = Debug|x64
+		{0A18A071-125E-442F-AFF7-A3F68ABECF99}.Debug|x86.ActiveCfg = Debug|Win32
+		{0A18A071-125E-442F-AFF7-A3F68ABECF99}.Debug|x86.Build.0 = Debug|Win32
+		{0A18A071-125E-442F-AFF7-A3F68ABECF99}.Release|x64.ActiveCfg = Release|x64
+		{0A18A071-125E-442F-AFF7-A3F68ABECF99}.Release|x64.Build.0 = Release|x64
+		{0A18A071-125E-442F-AFF7-A3F68ABECF99}.Release|x86.ActiveCfg = Release|Win32
+		{0A18A071-125E-442F-AFF7-A3F68ABECF99}.Release|x86.Build.0 = Release|Win32
+		{F34A2252-5B81-471A-AD86-F00984A0CA60}.Debug|x64.ActiveCfg = Debug|Win32
+		{F34A2252-5B81-471A-AD86-F00984A0CA60}.Debug|x86.ActiveCfg = Debug|Win32
+		{F34A2252-5B81-471A-AD86-F00984A0CA60}.Debug|x86.Build.0 = Debug|Win32
+		{F34A2252-5B81-471A-AD86-F00984A0CA60}.Release|x64.ActiveCfg = Release|Win32
+		{F34A2252-5B81-471A-AD86-F00984A0CA60}.Release|x86.ActiveCfg = Release|Win32
+		{F34A2252-5B81-471A-AD86-F00984A0CA60}.Release|x86.Build.0 = Release|Win32
+		{B94DB81C-B5FB-4984-99DC-5063C3793BFE}.Debug|x64.ActiveCfg = PD Release|Win32
+		{B94DB81C-B5FB-4984-99DC-5063C3793BFE}.Debug|x64.Build.0 = PD Release|Win32
+		{B94DB81C-B5FB-4984-99DC-5063C3793BFE}.Debug|x86.ActiveCfg = PD Threads Debug|Win32
+		{B94DB81C-B5FB-4984-99DC-5063C3793BFE}.Debug|x86.Build.0 = PD Threads Debug|Win32
+		{B94DB81C-B5FB-4984-99DC-5063C3793BFE}.Release|x64.ActiveCfg = PD Release|Win32
+		{B94DB81C-B5FB-4984-99DC-5063C3793BFE}.Release|x64.Build.0 = PD Release|Win32
+		{B94DB81C-B5FB-4984-99DC-5063C3793BFE}.Release|x86.ActiveCfg = PD Threads Release|Win32
+		{B94DB81C-B5FB-4984-99DC-5063C3793BFE}.Release|x86.Build.0 = PD Threads Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0A18A071-125E-442F-AFF7-A3F68ABECF99} = {18B6C134-83DE-4B74-B378-BFC1E0329630}
+		{F34A2252-5B81-471A-AD86-F00984A0CA60} = {18B6C134-83DE-4B74-B378-BFC1E0329630}
+		{B94DB81C-B5FB-4984-99DC-5063C3793BFE} = {18B6C134-83DE-4B74-B378-BFC1E0329630}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E95A3D83-D307-4A52-BBD0-2AAD857BFC3D}
+	EndGlobalSection
+EndGlobal
