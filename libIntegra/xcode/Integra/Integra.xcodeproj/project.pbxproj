@@ -22,6 +22,11 @@
 		7D2131EF1892B7FD00C270A7 /* vexp_fun.c in Sources */ = {isa = PBXBuildFile; fileRef = 7D2131E61892B7FD00C270A7 /* vexp_fun.c */; settings = {COMPILER_FLAGS = "-w"; }; };
 		7D2131F01892B7FD00C270A7 /* vexp_if.c in Sources */ = {isa = PBXBuildFile; fileRef = 7D2131E71892B7FD00C270A7 /* vexp_if.c */; settings = {COMPILER_FLAGS = "-w"; }; };
 		7D2131F71892B80A00C270A7 /* fiddle~.c in Sources */ = {isa = PBXBuildFile; fileRef = 7D2131F31892B80A00C270A7 /* fiddle~.c */; settings = {COMPILER_FLAGS = "-w"; }; };
+		7D301D16211D898D008C56E7 /* Integra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D8451D1187DB8CB008639D2 /* Integra.framework */; };
+		7D301D19211D8A09008C56E7 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D301D17211D89B7008C56E7 /* AudioToolbox.framework */; };
+		7D301D1A211D8A11008C56E7 /* AudioUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D301D18211D89B7008C56E7 /* AudioUnit.framework */; };
+		7D301D1D211D946F008C56E7 /* CollectionSchema.xsd in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7D900DCD18DC663C00AF8DEF /* CollectionSchema.xsd */; };
+		7D301D1E211D946F008C56E7 /* id2guid.csv in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7D900DCE18DC663C00AF8DEF /* id2guid.csv */; };
 		7D45816818DC7179006F0D60 /* modules in Resources */ = {isa = PBXBuildFile; fileRef = 7D45816718DC7179006F0D60 /* modules */; };
 		7D54F00C2118E5DE008D59D7 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D54F00B2118E5DE008D59D7 /* libz.tbd */; };
 		7D54F00E2118E5EB008D59D7 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D54F00D2118E5EB008D59D7 /* libxml2.tbd */; };
@@ -179,11 +184,20 @@
 		7DFC159818D9CD3100CA083C /* liblua.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DFC159718D9CD3100CA083C /* liblua.a */; };
 		7DFC159A18D9CD3D00CA083C /* libportaudio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DFC159918D9CD3D00CA083C /* libportaudio.a */; };
 		7DFC159C18D9CD4900CA083C /* libportmidi_s.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DFC159B18D9CD4900CA083C /* libportmidi_s.a */; };
-		7DFC159E18D9CE4A00CA083C /* AudioUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DFC159D18D9CE4A00CA083C /* AudioUnit.framework */; };
-		7DFC15A018D9CE5900CA083C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DFC159F18D9CE5900CA083C /* AudioToolbox.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		7D301D1C211D9462008C56E7 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				7D301D1D211D946F008C56E7 /* CollectionSchema.xsd in CopyFiles */,
+				7D301D1E211D946F008C56E7 /* id2guid.csv in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7D8865C7211C420C008ED309 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -228,6 +242,8 @@
 		7D2131F31892B80A00C270A7 /* fiddle~.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "fiddle~.c"; sourceTree = "<group>"; };
 		7D2131F41892B80A00C270A7 /* GNUmakefile.am */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GNUmakefile.am; sourceTree = "<group>"; };
 		7D2131F51892B80A00C270A7 /* makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = makefile; sourceTree = "<group>"; };
+		7D301D17211D89B7008C56E7 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		7D301D18211D89B7008C56E7 /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
 		7D45816718DC7179006F0D60 /* modules */ = {isa = PBXFileReference; lastKnownFileType = folder; name = modules; path = ../../../modules; sourceTree = "<group>"; };
 		7D54F0092118E563008D59D7 /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
 		7D54F00B2118E5DE008D59D7 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
@@ -394,8 +410,6 @@
 		7DFC159718D9CD3100CA083C /* liblua.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = liblua.a; path = "macosx/lua-5.2.3/liblua.a"; sourceTree = "<group>"; };
 		7DFC159918D9CD3D00CA083C /* libportaudio.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libportaudio.a; path = "macosx/portaudio-19/libportaudio.a"; sourceTree = "<group>"; };
 		7DFC159B18D9CD4900CA083C /* libportmidi_s.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libportmidi_s.a; path = "macosx/portmidi-217/libportmidi_s.a"; sourceTree = "<group>"; };
-		7DFC159D18D9CE4A00CA083C /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
-		7DFC159F18D9CE5900CA083C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -405,8 +419,6 @@
 			files = (
 				7D54F00E2118E5EB008D59D7 /* libxml2.tbd in Frameworks */,
 				7D54F00C2118E5DE008D59D7 /* libz.tbd in Frameworks */,
-				7DFC15A018D9CE5900CA083C /* AudioToolbox.framework in Frameworks */,
-				7DFC159E18D9CE4A00CA083C /* AudioUnit.framework in Frameworks */,
 				7D11074B189FC9E900B4A72E /* Carbon.framework in Frameworks */,
 				7D110748189FC91C00B4A72E /* CoreFoundation.framework in Frameworks */,
 				7D9B841518DC580100E71980 /* libflext-pd_t.a in Frameworks */,
@@ -414,6 +426,8 @@
 				7DFC159818D9CD3100CA083C /* liblua.a in Frameworks */,
 				7D110745189FC8ED00B4A72E /* CoreAudio.framework in Frameworks */,
 				7D110742189FC8C300B4A72E /* CoreMIDI.framework in Frameworks */,
+				7D301D19211D8A09008C56E7 /* AudioToolbox.framework in Frameworks */,
+				7D301D1A211D8A11008C56E7 /* AudioUnit.framework in Frameworks */,
 				7DFC159C18D9CD4900CA083C /* libportmidi_s.a in Frameworks */,
 				7DC426421F791C4E00334F11 /* libpd-osx.a in Frameworks */,
 				7DC426441F791C6D00334F11 /* libfftw3f.a in Frameworks */,
@@ -425,6 +439,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D301D16211D898D008C56E7 /* Integra.framework in Frameworks */,
 				7D8865C5211C3F4B008ED309 /* gtest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -533,8 +548,6 @@
 			isa = PBXGroup;
 			children = (
 				7D900DCC18DC65AD00AF8DEF /* Resources */,
-				7DFC159F18D9CE5900CA083C /* AudioToolbox.framework */,
-				7DFC159D18D9CE4A00CA083C /* AudioUnit.framework */,
 				7D8452DF187DC023008639D2 /* externals */,
 				7D8451DB187DB8CB008639D2 /* Supporting Files */,
 				7D8451DA187DB8CB008639D2 /* api */,
@@ -788,6 +801,8 @@
 				7D54F0092118E563008D59D7 /* libxml2.2.tbd */,
 				7DC426431F791C6C00334F11 /* libfftw3f.a */,
 				7DC426411F791C4E00334F11 /* libpd-osx.a */,
+				7D301D17211D89B7008C56E7 /* AudioToolbox.framework */,
+				7D301D18211D89B7008C56E7 /* AudioUnit.framework */,
 				7D8865C3211C3F44008ED309 /* gtest.framework */,
 			);
 			name = Frameworks;
@@ -930,6 +945,7 @@
 				7D8865B5211C3DD3008ED309 /* Sources */,
 				7D8865B6211C3DD3008ED309 /* Frameworks */,
 				7D8865C7211C420C008ED309 /* CopyFiles */,
+				7D301D1C211D9462008C56E7 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -1209,7 +1225,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
 				GCC_C_LANGUAGE_STANDARD = "compiler-default";
-				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Integra/Integra-Prefix.pch";
 				GCC_VERSION = "";
@@ -1370,7 +1386,7 @@
 				7D8451F8187DB8CB008639D2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		7D8451F9187DB8CB008639D2 /* Build configuration list for PBXNativeTarget "Integra" */ = {
 			isa = XCConfigurationList;
@@ -1379,7 +1395,7 @@
 				7D8451FB187DB8CB008639D2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		7D8865BF211C3DD3008ED309 /* Build configuration list for PBXNativeTarget "UnitTests" */ = {
 			isa = XCConfigurationList;
@@ -1388,7 +1404,7 @@
 				7D8865BE211C3DD3008ED309 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
