@@ -43,9 +43,8 @@ namespace integra_internal
 
         CError error = CError::SUCCESS;
 #ifdef __APPLE__
-        m_semaphore = sem_open("/semaphore", O_CREAT, 0777, 0);
-
-        if (m_semaphore == SEM_FAILED )
+        m_semaphore = dispatch_semaphore_create( 0 );
+        if ( m_semaphore == NULL )
         {
             error = CError::FAILED;
         }
@@ -80,7 +79,7 @@ namespace integra_internal
         int sem_rv = 0;
         
 #ifdef __APPLE__
-        sem_rv = sem_close( m_semaphore );
+        dispatch_release( m_semaphore );
 #else
         sem_rv = sem_destroy( m_semaphore );
         delete m_semaphore;
@@ -126,7 +125,11 @@ namespace integra_internal
 
 	template<class T> void CThreadedQueue<T>::send_signal_to_output_thread()
 	{
+#ifdef __APPLE__
+        dispatch_semaphore_signal( m_semaphore );
+#else
 		sem_post( m_semaphore );
+#endif
 	}
 
 
@@ -136,7 +139,11 @@ namespace integra_internal
 
 		while( !finished )
 		{
+#ifdef __APPLE__
+            dispatch_semaphore_wait( m_semaphore, DISPATCH_TIME_FOREVER );
+#else
 			sem_wait( m_semaphore );
+#endif
 
 			pthread_mutex_lock( &m_queue_mutex );
 

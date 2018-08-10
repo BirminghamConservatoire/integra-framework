@@ -25,7 +25,12 @@
 
 
 #include <pthread.h>
+
+#ifdef __APPLE__
+#include <dispatch/dispatch.h>
+#else
 #include <semaphore.h>
+#endif
 
 #include <list>
 
@@ -65,7 +70,11 @@ namespace integra_internal
 			std::list<T> *m_content;
 
 			pthread_mutex_t m_queue_mutex;
+#ifdef __APPLE__
+            dispatch_semaphore_t m_semaphore;
+#else
 			sem_t *m_semaphore;
+#endif
 
 			pthread_t m_output_thread;
 
