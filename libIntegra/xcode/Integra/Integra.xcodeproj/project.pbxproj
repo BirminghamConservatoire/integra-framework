@@ -27,6 +27,8 @@
 		7D301D1A211D8A11008C56E7 /* AudioUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D301D18211D89B7008C56E7 /* AudioUnit.framework */; };
 		7D301D1D211D946F008C56E7 /* CollectionSchema.xsd in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7D900DCD18DC663C00AF8DEF /* CollectionSchema.xsd */; };
 		7D301D1E211D946F008C56E7 /* id2guid.csv in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7D900DCE18DC663C00AF8DEF /* id2guid.csv */; };
+		7D3D0FDE2120B78300F28EA6 /* VERSION in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7D3D0FDD2120B77000F28EA6 /* VERSION */; };
+		7D3D10132123412600F28EA6 /* util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7D3D10112123412600F28EA6 /* util.cpp */; };
 		7D45816818DC7179006F0D60 /* modules in Resources */ = {isa = PBXBuildFile; fileRef = 7D45816718DC7179006F0D60 /* modules */; };
 		7D54F00C2118E5DE008D59D7 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D54F00B2118E5DE008D59D7 /* libz.tbd */; };
 		7D54F00E2118E5EB008D59D7 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D54F00D2118E5EB008D59D7 /* libxml2.tbd */; };
@@ -195,6 +197,16 @@
 			files = (
 				7D301D1D211D946F008C56E7 /* CollectionSchema.xsd in CopyFiles */,
 				7D301D1E211D946F008C56E7 /* id2guid.csv in CopyFiles */,
+				7D3D0FDE2120B78300F28EA6 /* VERSION in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7D3D0FD62120B67500F28EA6 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,6 +256,9 @@
 		7D2131F51892B80A00C270A7 /* makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = makefile; sourceTree = "<group>"; };
 		7D301D17211D89B7008C56E7 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		7D301D18211D89B7008C56E7 /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
+		7D3D0FDD2120B77000F28EA6 /* VERSION */ = {isa = PBXFileReference; lastKnownFileType = text; name = VERSION; path = ../../../VERSION; sourceTree = "<group>"; };
+		7D3D10112123412600F28EA6 /* util.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = util.cpp; path = ../../../tests/util.cpp; sourceTree = "<group>"; };
+		7D3D10122123412600F28EA6 /* util.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = util.hpp; path = ../../../tests/util.hpp; sourceTree = "<group>"; };
 		7D45816718DC7179006F0D60 /* modules */ = {isa = PBXFileReference; lastKnownFileType = folder; name = modules; path = ../../../modules; sourceTree = "<group>"; };
 		7D54F0092118E563008D59D7 /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
 		7D54F00B2118E5DE008D59D7 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
@@ -766,6 +781,8 @@
 			isa = PBXGroup;
 			children = (
 				7D8865C9211C4489008ED309 /* main.cpp */,
+				7D3D10112123412600F28EA6 /* util.cpp */,
+				7D3D10122123412600F28EA6 /* util.hpp */,
 			);
 			path = UnitTests;
 			sourceTree = "<group>";
@@ -773,6 +790,7 @@
 		7D900DCC18DC65AD00AF8DEF /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7D3D0FDD2120B77000F28EA6 /* VERSION */,
 				7D45816718DC7179006F0D60 /* modules */,
 				7D900DCD18DC663C00AF8DEF /* CollectionSchema.xsd */,
 				7D900DCE18DC663C00AF8DEF /* id2guid.csv */,
@@ -946,6 +964,7 @@
 				7D8865B6211C3DD3008ED309 /* Frameworks */,
 				7D8865C7211C420C008ED309 /* CopyFiles */,
 				7D301D1C211D9462008C56E7 /* CopyFiles */,
+				7D3D0FD62120B67500F28EA6 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -1090,6 +1109,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D8865CA211C4489008ED309 /* main.cpp in Sources */,
+				7D3D10132123412600F28EA6 /* util.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1333,7 +1353,7 @@
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -1357,7 +1377,7 @@
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
