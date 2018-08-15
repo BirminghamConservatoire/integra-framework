@@ -33,9 +33,15 @@ namespace k
     const std::string moduleDirectory           = "Integra.framework/Resources/modules";
     const std::string thirdPartyModuleDirectory = "third_party";
     const std::string versionFileName           = "VERSION";
+    const std::string testFileName              = "IntegraTest.integra";
+    const std::string saveFileName              = "TestSave.integra";
+    const std::string containerName             = "Container1";
+    const std::string containerGUID             = "86c25f15-345a-f9ca-f6b8-a2430e2c0bd5";
     const std::string tapDelayGUID              = "c811c1b6-24b4-5a7a-065a-2c12cf061d4b";
     const std::string tapDelayName              = "TapDelay1";
     const std::string tapDelayEndpoint          = tapDelayName + "." + "delayTime";
+    const std::string newEndpointName           = "Foo";
+    const std::string newTapDelayEndpoint       = containerName + "." + tapDelayName;
     const float testFloatValue                  = 1.5f;
 }
 
@@ -142,6 +148,14 @@ TEST_F(ServerTest, VersionIsCorrect)
 TEST_F(ServerTest, AllModuleIdsIsCorrect)
 {
     auto rv = server()->get_all_module_ids();
+    
+    for (auto guid : rv)
+    {
+        auto iid = server()->find_interface(guid);
+        std::cout << "GUID: " << CGuidHelper::guid_to_string(guid) << "\tName: " << iid->get_interface_info().get_name() << std::endl;
+    }
+    
+    
     ASSERT_EQ(rv.size(), number_of_files_in_directory(k::moduleDirectory.c_str()));
 }
 
@@ -193,6 +207,8 @@ TEST_F(ServerTest, PingAllSuccess)
 
 #pragma mark -  Test server commands
 
+// INewCommand
+
 TEST_F(ServerTest, NewCommandSuccess)
 {
     GUID guid;
@@ -215,6 +231,8 @@ TEST_F(ServerTest, NewCommandCreatesInstance)
     ASSERT_EQ(node->get_name(), k::tapDelayName);
 }
 
+// IDeleteCommand
+
 TEST_F(CommandTest, DeleteCommandSuccess)
 {
     CError err = server()->process_command(IDeleteCommand::create(CPath(k::tapDelayName)));
@@ -229,6 +247,8 @@ TEST_F(CommandTest, DeleteCommandRemovesInstance)
     auto nodes = server()->get_nodes();
     ASSERT_TRUE(nodes.empty());
 }
+
+// ISetCommand
 
 TEST_F(CommandTest, SetCommandSuccess)
 {
@@ -265,6 +285,80 @@ TEST_F(CommandTest, SetCommandSetsValue)
     ASSERT_EQ(value, k::testFloatValue);
 }
 
+// IRenameCommand
+TEST_F(CommandTest, RenameCommandSuccess)
+{
+    CError err = server()->process_command(IRenameCommand::create(k::tapDelayName, k::newEndpointName));
+    ASSERT_EQ(err, CError::SUCCESS);
+}
+
+TEST_F(CommandTest, RenameCommandSetsName)
+{
+    CError err = server()->process_command(IRenameCommand::create(k::tapDelayName, k::newEndpointName));
+    assert(err == CError::SUCCESS);
+    
+    auto endpoint = server()->find_node_endpoint(k::newEndpointName);
+    
+    ASSERT_NE(endpoint, nullptr);
+    ASSERT_EQ(server()->find_node_endpoint(k::tapDelayEndpoint), nullptr);
+}
+
+// IMoveCommand
+TEST_F(CommandTest, MoveCommandSuccess)
+{
+    GUID guid;
+    CGuidHelper::string_to_guid(k::containerGUID, guid);
+    
+    CError err = server()->process_command(INewCommand::create(guid, k::containerName, CPath()));
+    assert(err == CError::SUCCESS);
+    
+    err = server()->process_command(IMoveCommand::create(k::tapDelayName, k::containerName));
+    ASSERT_EQ(err, CError::SUCCESS);
+}
+
+TEST_F(CommandTest, MoveCommandMovesNode)
+{
+    GUID guid;
+    CGuidHelper::string_to_guid(k::containerGUID, guid);
+    
+    CError err = server()->process_command(INewCommand::create(guid, k::containerName, CPath()));
+    assert(err == CError::SUCCESS);
+
+    err = server()->process_command(IMoveCommand::create(k::tapDelayName, k::containerName));
+    assert(err == CError::SUCCESS);
+    
+    ASSERT_EQ(server()->find_node_endpoint(k::newTapDelayEndpoint), nullptr);
+}
+
+// ILoadCommand
+TEST_F(CommandTest, LoadCommandSuccess)
+{
+    CError err = server()->process_command(ILoadCommand::create(k::testFileName, CPath()));
+    ASSERT_EQ(err, CError::SUCCESS);
+}
+
+TEST_F(CommandTest, DISABLED_LoadCommandLoadsCorrectly)
+{
+}
+
+TEST_F(CommandTest, DISABLED_LoadOldVersionFileSuccess)
+{
+}
+
+TEST_F(CommandTest, DISABLED_LoadNewerVersionFileFail)
+{
+}
+
+// ISaveCommand
+TEST_F(CommandTest, SaveCommandSuccess)
+{
+    CError err = server()->process_command(ISaveCommand::create(k::saveFileName, k::tapDelayName));
+    ASSERT_EQ(err, CError::SUCCESS);
+}
+
+TEST_F(CommandTest, DISABLED_SaveCommandCkSumPass)
+{
+}
 
 
 #pragma mark - Test module manager
@@ -278,5 +372,6 @@ TEST_F(CommandTest, SetCommandSetsValue)
 int main(int argc, char **argv)
 {
     ::testing::InitGoogleTest(&argc, argv);
+    ::testing::GTEST_FLAG(filter) = "CommandTest*";
     return RUN_ALL_TESTS();
 }

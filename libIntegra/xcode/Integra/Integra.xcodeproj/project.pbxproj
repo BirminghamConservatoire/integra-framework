@@ -29,6 +29,7 @@
 		7D301D1E211D946F008C56E7 /* id2guid.csv in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7D900DCE18DC663C00AF8DEF /* id2guid.csv */; };
 		7D3D0FDE2120B78300F28EA6 /* VERSION in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7D3D0FDD2120B77000F28EA6 /* VERSION */; };
 		7D3D10132123412600F28EA6 /* util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7D3D10112123412600F28EA6 /* util.cpp */; };
+		7D3D101521242CFC00F28EA6 /* IntegraTest.integra in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7D3D101421242CE600F28EA6 /* IntegraTest.integra */; };
 		7D45816818DC7179006F0D60 /* modules in Resources */ = {isa = PBXBuildFile; fileRef = 7D45816718DC7179006F0D60 /* modules */; };
 		7D54F00C2118E5DE008D59D7 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D54F00B2118E5DE008D59D7 /* libz.tbd */; };
 		7D54F00E2118E5EB008D59D7 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D54F00D2118E5EB008D59D7 /* libxml2.tbd */; };
@@ -198,6 +199,7 @@
 				7D301D1D211D946F008C56E7 /* CollectionSchema.xsd in CopyFiles */,
 				7D301D1E211D946F008C56E7 /* id2guid.csv in CopyFiles */,
 				7D3D0FDE2120B78300F28EA6 /* VERSION in CopyFiles */,
+				7D3D101521242CFC00F28EA6 /* IntegraTest.integra in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,6 +261,7 @@
 		7D3D0FDD2120B77000F28EA6 /* VERSION */ = {isa = PBXFileReference; lastKnownFileType = text; name = VERSION; path = ../../../VERSION; sourceTree = "<group>"; };
 		7D3D10112123412600F28EA6 /* util.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = util.cpp; path = ../../../tests/util.cpp; sourceTree = "<group>"; };
 		7D3D10122123412600F28EA6 /* util.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = util.hpp; path = ../../../tests/util.hpp; sourceTree = "<group>"; };
+		7D3D101421242CE600F28EA6 /* IntegraTest.integra */ = {isa = PBXFileReference; lastKnownFileType = file; name = IntegraTest.integra; path = ../../tests/resources/IntegraTest.integra; sourceTree = "<group>"; };
 		7D45816718DC7179006F0D60 /* modules */ = {isa = PBXFileReference; lastKnownFileType = folder; name = modules; path = ../../../modules; sourceTree = "<group>"; };
 		7D54F0092118E563008D59D7 /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
 		7D54F00B2118E5DE008D59D7 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
@@ -791,6 +794,7 @@
 			isa = PBXGroup;
 			children = (
 				7D3D0FDD2120B77000F28EA6 /* VERSION */,
+				7D3D101421242CE600F28EA6 /* IntegraTest.integra */,
 				7D45816718DC7179006F0D60 /* modules */,
 				7D900DCD18DC663C00AF8DEF /* CollectionSchema.xsd */,
 				7D900DCE18DC663C00AF8DEF /* id2guid.csv */,
