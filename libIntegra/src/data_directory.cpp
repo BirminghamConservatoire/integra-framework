@@ -226,6 +226,7 @@ namespace integra_internal
 		output_file = fopen( target_path, "wb" );
 		if( !output_file )
 		{
+            INTEGRA_TRACE_ERROR << "Error opening file: " << strerror(errno);
 			INTEGRA_TRACE_ERROR << "Couldn't write to data directory: " << target_path;
 			delete[] target_path;
 			return;
