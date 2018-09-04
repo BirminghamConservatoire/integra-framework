@@ -27,6 +27,8 @@
 		7D301D1A211D8A11008C56E7 /* AudioUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D301D18211D89B7008C56E7 /* AudioUnit.framework */; };
 		7D301D1D211D946F008C56E7 /* CollectionSchema.xsd in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7D900DCD18DC663C00AF8DEF /* CollectionSchema.xsd */; };
 		7D301D1E211D946F008C56E7 /* id2guid.csv in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7D900DCE18DC663C00AF8DEF /* id2guid.csv */; };
+		7D31CCD0213E8FDA004A4A64 /* IntegraTest-newer.integra in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7D31CCCF213E8FCD004A4A64 /* IntegraTest-newer.integra */; };
+		7D31CCD1213E8FDA004A4A64 /* IntegraTest-older.integra in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7D31CCCE213E8FCD004A4A64 /* IntegraTest-older.integra */; };
 		7D3D0FDE2120B78300F28EA6 /* VERSION in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7D3D0FDD2120B77000F28EA6 /* VERSION */; };
 		7D3D10132123412600F28EA6 /* util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7D3D10112123412600F28EA6 /* util.cpp */; };
 		7D3D101521242CFC00F28EA6 /* IntegraTest.integra in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7D3D101421242CE600F28EA6 /* IntegraTest.integra */; };
@@ -196,6 +198,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
+				7D31CCD0213E8FDA004A4A64 /* IntegraTest-newer.integra in CopyFiles */,
+				7D31CCD1213E8FDA004A4A64 /* IntegraTest-older.integra in CopyFiles */,
 				7D301D1D211D946F008C56E7 /* CollectionSchema.xsd in CopyFiles */,
 				7D301D1E211D946F008C56E7 /* id2guid.csv in CopyFiles */,
 				7D3D0FDE2120B78300F28EA6 /* VERSION in CopyFiles */,
@@ -258,6 +262,8 @@
 		7D2131F51892B80A00C270A7 /* makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = makefile; sourceTree = "<group>"; };
 		7D301D17211D89B7008C56E7 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		7D301D18211D89B7008C56E7 /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
+		7D31CCCE213E8FCD004A4A64 /* IntegraTest-older.integra */ = {isa = PBXFileReference; lastKnownFileType = file; name = "IntegraTest-older.integra"; path = "../../tests/resources/IntegraTest-older.integra"; sourceTree = "<group>"; };
+		7D31CCCF213E8FCD004A4A64 /* IntegraTest-newer.integra */ = {isa = PBXFileReference; lastKnownFileType = file; name = "IntegraTest-newer.integra"; path = "../../tests/resources/IntegraTest-newer.integra"; sourceTree = "<group>"; };
 		7D3D0FDD2120B77000F28EA6 /* VERSION */ = {isa = PBXFileReference; lastKnownFileType = text; name = VERSION; path = ../../../VERSION; sourceTree = "<group>"; };
 		7D3D10112123412600F28EA6 /* util.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = util.cpp; path = ../../../tests/util.cpp; sourceTree = "<group>"; };
 		7D3D10122123412600F28EA6 /* util.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = util.hpp; path = ../../../tests/util.hpp; sourceTree = "<group>"; };
@@ -794,6 +800,8 @@
 			isa = PBXGroup;
 			children = (
 				7D3D0FDD2120B77000F28EA6 /* VERSION */,
+				7D31CCCF213E8FCD004A4A64 /* IntegraTest-newer.integra */,
+				7D31CCCE213E8FCD004A4A64 /* IntegraTest-older.integra */,
 				7D3D101421242CE600F28EA6 /* IntegraTest.integra */,
 				7D45816718DC7179006F0D60 /* modules */,
 				7D900DCD18DC663C00AF8DEF /* CollectionSchema.xsd */,

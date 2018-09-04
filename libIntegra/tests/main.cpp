@@ -23,7 +23,8 @@
 
 #include "gtest.h"
 
-
+//#include <chrono>
+//#include <thread>
 
 using namespace testing;
 using namespace integra_api;
@@ -33,16 +34,21 @@ namespace k
     const std::string moduleDirectory           = "Integra.framework/Resources/modules";
     const std::string thirdPartyModuleDirectory = "third_party";
     const std::string versionFileName           = "VERSION";
-    const std::string testFileName              = "IntegraTest.integra";
-    const std::string saveFileName              = "TestSave.integra";
-    const std::string containerName             = "Container1";
+    const std::string containerName             = "IntegraTest";
+    const std::string integraSuffix             = ".integra";
+    const std::string testFileName              = containerName + integraSuffix;
+    const std::string olderTestFileName         = containerName + "-older" + integraSuffix;
+    const std::string newerTestFileName         = containerName + "-newer" + integraSuffix;
+    const std::string problemFileName           = "learning(fixed)" + integraSuffix;
+    const std::string saveFileName              = "TestSave" + integraSuffix;
     const std::string containerGUID             = "86c25f15-345a-f9ca-f6b8-a2430e2c0bd5";
     const std::string tapDelayGUID              = "c811c1b6-24b4-5a7a-065a-2c12cf061d4b";
     const std::string tapDelayName              = "TapDelay1";
     const std::string tapDelayEndpoint          = tapDelayName + "." + "delayTime";
-    const std::string newEndpointName           = "Foo";
+    const std::string newEndpointName           = "Test";
     const std::string newTapDelayEndpoint       = containerName + "." + tapDelayName;
     const float testFloatValue                  = 1.5f;
+    const int expectedTopLevelNodes             = 4;   // 1 track, 1 connection, 1 Player, 1 MidiMonitor
 }
 
 class SessionTest : public ::testing::Test
@@ -149,11 +155,11 @@ TEST_F(ServerTest, AllModuleIdsIsCorrect)
 {
     auto rv = server()->get_all_module_ids();
     
-    for (auto guid : rv)
-    {
-        auto iid = server()->find_interface(guid);
-        std::cout << "GUID: " << CGuidHelper::guid_to_string(guid) << "\tName: " << iid->get_interface_info().get_name() << std::endl;
-    }
+//    for (auto guid : rv)
+//    {
+//        auto iid = server()->find_interface(guid);
+//        std::cout << "GUID: " << CGuidHelper::guid_to_string(guid) << "\tName: " << iid->get_interface_info().get_name() << std::endl;
+//    }
     
     
     ASSERT_EQ(rv.size(), number_of_files_in_directory(k::moduleDirectory.c_str()));
@@ -337,16 +343,44 @@ TEST_F(CommandTest, LoadCommandSuccess)
     ASSERT_EQ(err, CError::SUCCESS);
 }
 
-TEST_F(CommandTest, DISABLED_LoadCommandLoadsCorrectly)
+TEST_F(ServerTest, LoadCommandLoadsCorrectly)
 {
+    CError err = server()->process_command(ILoadCommand::create(k::testFileName, CPath()));
+    assert(err == CError::SUCCESS);
+
+    auto nodes = server()->get_nodes();
+    INode *topLevelContainer = nullptr;
+
+    ASSERT_EQ(nodes.size(), 1);
+    EXPECT_NO_THROW(topLevelContainer = nodes.at(k::containerName));
+    ASSERT_EQ(topLevelContainer->get_children().size(), k::expectedTopLevelNodes);
+    
+    // TODO: we could inspect the entire node graph but probably overkill for now
 }
 
-TEST_F(CommandTest, DISABLED_LoadOldVersionFileSuccess)
+TEST_F(ServerTest, DISABLED_ProblemFileLoadsCorrectly)
 {
+    CError err = server()->process_command(ILoadCommand::create(k::problemFileName, CPath()));
+    ASSERT_EQ(err, CError::SUCCESS);
 }
 
-TEST_F(CommandTest, DISABLED_LoadNewerVersionFileFail)
+TEST_F(ServerTest, DISABLED_ModuleDataLoadsCorrectly) // e.g. WAV file
 {
+//    CError err = server()->process_command(ILoadCommand::create(k::problemFileName, CPath()));
+//    ASSERT_EQ(err, CError::SUCCESS);
+}
+
+
+TEST_F(CommandTest, LoadOldVersionFileSuccess)
+{
+    CError err = server()->process_command(ILoadCommand::create(k::olderTestFileName, CPath()));
+    ASSERT_EQ(err, CError::SUCCESS);
+}
+
+TEST_F(CommandTest, LoadNewerVersionFileFail)
+{
+    CError err = server()->process_command(ILoadCommand::create(k::newerTestFileName, CPath()));
+    ASSERT_EQ(err, CError::FILE_MORE_RECENT_ERROR);
 }
 
 // ISaveCommand
@@ -372,6 +406,6 @@ TEST_F(CommandTest, DISABLED_SaveCommandCkSumPass)
 int main(int argc, char **argv)
 {
     ::testing::InitGoogleTest(&argc, argv);
-    ::testing::GTEST_FLAG(filter) = "CommandTest*";
+//    ::testing::GTEST_FLAG(filter) = "ServerTest.ProblemFileLoadsCorrectly";
     return RUN_ALL_TESTS();
 }
