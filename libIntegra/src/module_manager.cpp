@@ -168,7 +168,7 @@ namespace integra_internal
 				continue;
 			}
             
-            temporary_file = tmpfileplus_f(m_server.get_scratch_directory().c_str(), "embedded_module", temporary_file_name, sizeof(temporary_file_name), 0);
+            temporary_file = tmpfileplus_f(m_server.get_scratch_directory().c_str(), "embedded_module", temporary_file_name, sizeof(temporary_file_name), 1);
             
 			if( !temporary_file )
 			{
