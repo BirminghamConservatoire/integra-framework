@@ -595,7 +595,7 @@ namespace integra_internal
 
 		string parameter_string;
 
-		for( int i = parent_elements; i < child_elements; i++ )
+		for( auto i = parent_elements; i < child_elements; i++ )
 		{
 			const string &path_element = child_path[ i ];
 
