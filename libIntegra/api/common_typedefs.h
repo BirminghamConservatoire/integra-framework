@@ -61,6 +61,7 @@ namespace integra_api
 	#define INTEGRA_API										/** Blank stub for non-Windows build environments */
 #endif
 
+typedef unsigned long internal_id;
 
 namespace integra_api
 {
@@ -72,10 +73,13 @@ namespace integra_api
 	typedef std::unordered_map<string, string> string_map;	/**< Unordered string-to-string map */
 
 	/* others */
-	typedef std::vector<int> int_vector;					/**< Variable-length array of ints */
-	typedef std::vector<float> float_vector;				/**< Variable-length array of floats */
-	typedef std::unordered_set<int> int_set;				/**< Unordered set of ints */
-	typedef std::unordered_map<int, int> int_map;			/**< Unordered int-to-int map */
+	typedef std::vector<int> int_vector;					        /**< Variable-length array of ints */
+	typedef std::vector<float> float_vector;				        /**< Variable-length array of floats */
+	typedef std::unordered_set<int> int_set;				        /**< Unordered set of ints */
+    typedef std::unordered_set<internal_id> id_set;                 /**< Unordered set of ids */
+	typedef std::unordered_map<int, int> int_map;			        /**< Unordered int-to-int map */
+    typedef std::unordered_map<int, int> int_map;                   /**< Unordered int-to-int map */
+    typedef std::unordered_map<internal_id, internal_id> id_map;    /**< Unordered id-to-id map */
 };
 
 

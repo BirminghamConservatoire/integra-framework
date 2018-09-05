@@ -35,7 +35,7 @@
 		7D45816818DC7179006F0D60 /* modules in Resources */ = {isa = PBXBuildFile; fileRef = 7D45816718DC7179006F0D60 /* modules */; };
 		7D54F00C2118E5DE008D59D7 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D54F00B2118E5DE008D59D7 /* libz.tbd */; };
 		7D54F00E2118E5EB008D59D7 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D54F00D2118E5EB008D59D7 /* libxml2.tbd */; };
-		7D54F01221199B5A008D59D7 /* tmpfileplus.c in Sources */ = {isa = PBXBuildFile; fileRef = 7D54F01021199B5A008D59D7 /* tmpfileplus.c */; };
+		7D54F01221199B5A008D59D7 /* tmpfileplus.c in Sources */ = {isa = PBXBuildFile; fileRef = 7D54F01021199B5A008D59D7 /* tmpfileplus.c */; settings = {COMPILER_FLAGS = "-w"; }; };
 		7D54F01321199B5A008D59D7 /* tmpfileplus.h in Headers */ = {isa = PBXBuildFile; fileRef = 7D54F01121199B5A008D59D7 /* tmpfileplus.h */; };
 		7D8451DF187DB8CB008639D2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7D8451DD187DB8CB008639D2 /* InfoPlist.strings */; };
 		7D845213187DBACF008639D2 /* command_result.h in Headers */ = {isa = PBXBuildFile; fileRef = 7D8451FF187DBACF008639D2 /* command_result.h */; settings = {ATTRIBUTES = (Public, ); }; };

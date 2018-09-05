@@ -107,7 +107,7 @@ namespace integra_internal
 
 			CError connect_or_disconnect( const CNodeEndpoint &source, const CNodeEndpoint &target, const string &command );
 
-			int get_patch_id( internal_id id ) const;
+			internal_id get_patch_id( internal_id id ) const;
 			int get_stream_connection_index( const CNodeEndpoint &node_endpoint ) const;
 
 			void handle_midi_input();
@@ -144,7 +144,7 @@ namespace integra_internal
 
 			int m_next_module_y_slot;
 
-			int_map m_map_id_to_patch_id;
+			id_map m_map_id_to_patch_id;
 
 			CThreadedQueue<pd::Message> *m_feedback_queue;
 

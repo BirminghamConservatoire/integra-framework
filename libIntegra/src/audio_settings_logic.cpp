@@ -27,6 +27,7 @@
 #include "server.h"
 #include "node.h"
 #include "audio_engine.h"
+#include "trace.h"
 
 #include "api/string_helper.h"
 #include "api/command.h"
@@ -104,6 +105,8 @@ namespace integra_internal
 			case CCommandSource::INITIALIZATION:
 			case CCommandSource::SYSTEM:
 				return;
+            default:
+                INTEGRA_TRACE_ERROR << "Unexpected command source: " << source.get_text();
 		}
 
 		if( endpoint_name == endpoint_selected_driver )

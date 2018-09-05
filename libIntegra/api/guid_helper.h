@@ -59,8 +59,8 @@ namespace integra_api
 			static string guid_to_string( const GUID &guid );
 
 			/** \brief Convert string to guid
-			 * \param string.  Must be hexadecimal in form "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-			 * \param[out] output.  On success, converted guid is stored here.
+             * \param string  Must be hexadecimal in form "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+             * \param[out] output  On success, converted guid is stored here.
 			 * \return CError::INPUT_ERROR if input was incorrectly formatted.  Otherwise CError::SUCCESS
 			 */
 			static CError string_to_guid( const string &string, GUID &output );

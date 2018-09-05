@@ -33,6 +33,8 @@
 #include <dirent.h>
 #include <math.h>
 
+#include <limits>
+
 #include "../externals/minizip/zip.h"
 #include "../externals/minizip/unzip.h"
 
@@ -211,7 +213,8 @@ namespace integra_internal
 		char *target_path;
 		FILE *output_file;
 		unsigned char *output_buffer;
-		int bytes_read, total_bytes_read, bytes_remaining;
+        int bytes_read;
+        unsigned long total_bytes_read, bytes_remaining;
 
 		assert( unzip_file && file_info && relative_file_path );
 
@@ -241,8 +244,10 @@ namespace integra_internal
 		{
 			bytes_remaining = file_info->uncompressed_size - total_bytes_read;
 			assert( bytes_remaining > 0 );
-
-			bytes_read = unzReadCurrentFile( unzip_file, output_buffer, MIN( CFileIO::data_copy_buffer_size, bytes_remaining ) );
+            
+            unsigned int len = bytes_remaining < std::numeric_limits<unsigned int>::max() ? MIN( CFileIO::data_copy_buffer_size, static_cast<unsigned>(bytes_remaining) ) : CFileIO::data_copy_buffer_size;
+			bytes_read = unzReadCurrentFile( unzip_file, output_buffer, len );
+            
 			if( bytes_read <= 0 )
 			{
 				INTEGRA_TRACE_ERROR << "Error decompressing file";

@@ -335,7 +335,7 @@ namespace integra_internal
         m_pd->finishMessage( patch_message_target, "obj" );
 
 		m_next_module_y_slot ++;
-
+        
 		m_map_id_to_patch_id[ id ] = m_map_id_to_patch_id.size();
 
 		test_map_sanity();
@@ -356,8 +356,10 @@ namespace integra_internal
 	CError CDspEngine::remove_module( internal_id id )
 	{
 		INTEGRA_TRACE_VERBOSE << "remove module id " << id;
-
-		pthread_mutex_lock( &m_mutex );
+        
+        CError result = CError::SUCCESS;
+		
+        pthread_mutex_lock( &m_mutex );
 
 		//send 'fini' message
 		m_pd->startMessage();
@@ -377,10 +379,22 @@ namespace integra_internal
 
 		m_pd->sendMessage( patch_message_target, "cut" );
 
-		int patch_id = get_patch_id( id );
-		m_map_id_to_patch_id.erase( id );
+        internal_id patch_id;
+        
+        try
+        {
+            patch_id = get_patch_id( id );
+        }
+        catch (std::exception& e)
+        {
+            INTEGRA_TRACE_ERROR << "Exception: " << e.what();
+            result = CError::FAILED;
+            goto EXIT;
+        }
+        
+		m_map_id_to_patch_id.erase( static_cast<int>( id ) );
 
-		for( int_map::iterator i = m_map_id_to_patch_id.begin(); i != m_map_id_to_patch_id.end(); i++ )
+		for( auto i = m_map_id_to_patch_id.begin(); i != m_map_id_to_patch_id.end(); i++ )
 		{
 			if( i->second > patch_id )
 			{
@@ -389,10 +403,10 @@ namespace integra_internal
 		}
 
 		test_map_sanity();
-
+    EXIT:
 		pthread_mutex_unlock( &m_mutex );
 
-		return CError::SUCCESS;
+		return result;
 	}
 
 
@@ -400,12 +414,12 @@ namespace integra_internal
 	{
 		//m_map_id_to_patch_id should contain all values from 0 .. m_map_id_to_patch_id.size()-1, with no duplicates
 
-		int_set values;
+		id_set values;
 
-		for( int_map::const_iterator i = m_map_id_to_patch_id.begin(); i != m_map_id_to_patch_id.end(); i++ )
+		for( auto i = m_map_id_to_patch_id.begin(); i != m_map_id_to_patch_id.end(); i++ )
 		{
-			int value = i->second;
-			if( value < 0 || value >= m_map_id_to_patch_id.size() )
+			internal_id value = i->second;
+			if( value >= m_map_id_to_patch_id.size() )
 			{
 				INTEGRA_TRACE_ERROR << "map sanity check failed - value " << value << "is out of range";
 			}
@@ -439,39 +453,45 @@ namespace integra_internal
 	CError CDspEngine::connect_or_disconnect( const CNodeEndpoint &source, const CNodeEndpoint &target, const string &command )
 	{
 		CError result;
-
+        internal_id source_patch_id, target_patch_id;
+        int source_connection_index, target_connection_index;
+        
 		pthread_mutex_lock( &m_mutex );
 
-		int source_patch_id = get_patch_id( CNode::downcast( source.get_node() ).get_id() );
-		int target_patch_id = get_patch_id( CNode::downcast( target.get_node() ).get_id() );
+        try
+        {
+            source_patch_id = get_patch_id( CNode::downcast( source.get_node() ).get_id() );
+            target_patch_id = get_patch_id( CNode::downcast( target.get_node() ).get_id() );
+        }
+        catch (std::exception& e)
+        {
+            INTEGRA_TRACE_ERROR << "Exception: " << e.what();
+            INTEGRA_TRACE_ERROR << "failed to get a connection index - can't " << command;
+            result = CError::FAILED;
 
-		if( source_patch_id < 0 || target_patch_id < 0 )
-		{
-			INTEGRA_TRACE_ERROR << "failed to get a patch id - can't " << command;
-		}
-		else
-		{
-			int source_connection_index = get_stream_connection_index( source );
-			int target_connection_index = get_stream_connection_index( target );
-
-			if( source_connection_index < 0 || target_connection_index < 0 )
-			{
-				INTEGRA_TRACE_ERROR << "failed to get a connection index - can't " << command;
-				result = CError::FAILED;
-			}
-			else
-			{
-				m_pd->startMessage();
-				m_pd->addFloat( source_patch_id );
-				m_pd->addFloat( source_connection_index );
-				m_pd->addFloat( target_patch_id );
-				m_pd->addFloat( target_connection_index );
-				m_pd->finishMessage( patch_message_target, command ); 
-
-				result = CError::SUCCESS;
-			}
-		}
-
+            goto EXIT;
+        }
+	
+        source_connection_index = get_stream_connection_index( source );
+        target_connection_index = get_stream_connection_index( target );
+        
+        if( source_connection_index < 0 || target_connection_index < 0 )
+        {
+            INTEGRA_TRACE_ERROR << "failed to get a connection index - can't " << command;
+            result = CError::FAILED;
+        }
+        else
+        {
+            m_pd->startMessage();
+            m_pd->addFloat( source_patch_id );
+            m_pd->addFloat( source_connection_index );
+            m_pd->addFloat( target_patch_id );
+            m_pd->addFloat( target_connection_index );
+            m_pd->finishMessage( patch_message_target, command );
+            
+            result = CError::SUCCESS;
+        }
+    EXIT:
 		pthread_mutex_unlock( &m_mutex );
 
 		return result;
@@ -717,7 +737,7 @@ namespace integra_internal
 		int channel = message.channel % 16;
 		int device_index = message.channel / 16;
 
-		unsigned int midi_message = message.channel | ( status << 4 ) | ( value1 << 8 ) | ( value2 << 16 );
+		unsigned int midi_message = channel | ( status << 4 ) | ( value1 << 8 ) | ( value2 << 16 );
 
 		IMidiEngine &midi_engine = m_server.get_midi_engine();
 
@@ -873,13 +893,13 @@ namespace integra_internal
 	}
 
 
-	int CDspEngine::get_patch_id( internal_id id ) const
+	internal_id CDspEngine::get_patch_id( internal_id id ) const
 	{
-		int_map::const_iterator lookup = m_map_id_to_patch_id.find( id );
+		auto lookup = m_map_id_to_patch_id.find( id );
 		if( lookup == m_map_id_to_patch_id.end() )
 		{
 			INTEGRA_TRACE_ERROR << "Can't find patch id from internal id " << id;
-			return -1;
+			throw std::runtime_error("Invalid id");
 		}
 
 		return lookup->second;

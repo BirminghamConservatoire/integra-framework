@@ -152,7 +152,7 @@ namespace integra_api
 
 			/** \brief Create an instance of IRenameCommand
 			 * \param path the node to rename
-			 * \param string new name for the node.  Must be unique within siblings, must only use characters within CStringHelper::node_name_character_set
+			 * \param new_name new name for the node.  Must be unique within siblings, must only use characters within CStringHelper::node_name_character_set
 			 * \return a pointer to the command, created on the heap.
 			 */
 			static IRenameCommand *create( const CPath &path, const string &new_name );

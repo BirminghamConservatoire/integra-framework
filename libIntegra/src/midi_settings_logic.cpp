@@ -99,6 +99,8 @@ namespace integra_internal
 			case CCommandSource::INITIALIZATION:
 			case CCommandSource::SYSTEM:
 				return;
+            default:
+                INTEGRA_TRACE_ERROR << "Unexpected command source: " << source.get_text();
 		}
 
 		if( endpoint_name == endpoint_active_input_devices )

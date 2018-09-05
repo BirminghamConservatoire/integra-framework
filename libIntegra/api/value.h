@@ -253,7 +253,7 @@ namespace integra_api
 		private:
 
 			/* calculate levenshtein distance between two strings.  */
-			static int levenshtein_distance( const char *string1, const char *string2 );
+			static unsigned long levenshtein_distance( const char *string1, const char *string2 );
 
 			string m_value;
 	};

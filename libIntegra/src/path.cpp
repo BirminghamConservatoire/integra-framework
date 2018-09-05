@@ -44,10 +44,10 @@ namespace integra_api
 	{
 		m_string_is_valid = false;
 
-		int element_start = 0;
+        string::size_type element_start = 0;
 		while( true )
 		{
-			int element_end = path_string.find( '.', element_start );
+			auto element_end = path_string.find( '.', element_start );
 
 			if( element_end == string::npos )
 			{
@@ -79,15 +79,15 @@ namespace integra_api
 	}
 	
 
-	int CPath::get_number_of_elements()	const
+    std::size_t CPath::get_number_of_elements()	const
 	{
 		return m_elements.size();
 	}
 
 
-	const string &CPath::operator[]( int index ) const
+    const string &CPath::operator[]( std::size_t index ) const
 	{
-		if( index < 0 || index >= m_elements.size() )
+		if( index >= m_elements.size() )
 		{
 			INTEGRA_TRACE_ERROR << "Incorrect index:" << index;
 			static string dummy;
@@ -118,7 +118,7 @@ namespace integra_api
 
 	string CPath::pop_element()
 	{
-		int number_of_elements = m_elements.size();
+		auto number_of_elements = m_elements.size();
 		if( number_of_elements == 0 )
 		{
 			INTEGRA_TRACE_ERROR << "trying to pop empty path";
@@ -157,7 +157,7 @@ namespace integra_api
 
 	void CPath::rebuild_string()
 	{
-		int number_of_elements = m_elements.size();
+		auto number_of_elements = m_elements.size();
 
 		m_string.clear();
 

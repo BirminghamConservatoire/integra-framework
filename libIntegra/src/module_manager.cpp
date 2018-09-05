@@ -126,8 +126,8 @@ namespace integra_internal
         string::size_type implementation_directory_length;
 		unsigned char *copy_buffer;
 		int bytes_read;
-		int total_bytes_read;
-		int bytes_remaining;
+		unsigned long total_bytes_read;
+		unsigned long bytes_remaining;
 		GUID loaded_module_id;
 		CError CError = CError::SUCCESS;
 
@@ -190,7 +190,8 @@ namespace integra_internal
 				bytes_remaining = file_info.uncompressed_size - total_bytes_read;
 				assert( bytes_remaining > 0 );
 
-				bytes_read = unzReadCurrentFile( unzip_file, copy_buffer, MIN( CFileIO::data_copy_buffer_size, bytes_remaining ) );
+                unsigned int len = bytes_remaining < std::numeric_limits<unsigned int>::max() ? MIN( CFileIO::data_copy_buffer_size, static_cast<unsigned>(bytes_remaining) ) : CFileIO::data_copy_buffer_size;
+				bytes_read = unzReadCurrentFile( unzip_file, copy_buffer, len );
 				if( bytes_read <= 0 )
 				{
 					INTEGRA_TRACE_ERROR << "Error decompressing file";
@@ -476,7 +477,7 @@ namespace integra_internal
 		string implementation_path = get_implementation_path( interface_definition ) + implementation_info->get_patch_name();
 
 		/* chop off patch extension */
-		int implementation_path_length = implementation_path.length() - patch_extension.length();
+		auto implementation_path_length = implementation_path.length() - patch_extension.length();
 		if( implementation_path_length <= 0 || implementation_path.substr( implementation_path_length ) != patch_extension )
 		{
 			INTEGRA_TRACE_ERROR << "Implementation path doesn't end in correct patch extension: " << implementation_path;
@@ -652,7 +653,7 @@ namespace integra_internal
 				continue;
 			}
 
-			for( int i = m_legacy_module_id_table.size(); i <= old_id; i++ )
+			for( auto i = m_legacy_module_id_table.size(); i <= old_id; i++ )
 			{
 				m_legacy_module_id_table.push_back( CGuidHelper::null_guid ); 
 			}
@@ -798,7 +799,13 @@ namespace integra_internal
 			return NULL;
 		}
 
-		buffer_size = file_info.uncompressed_size;
+        if (file_info.uncompressed_size > std::numeric_limits<unsigned int>::max())
+        {
+            INTEGRA_TRACE_ERROR << "Uncompressed size is too big: " << idd_file_name;
+            return NULL;
+        }
+        
+		buffer_size = static_cast<unsigned int>( file_info.uncompressed_size );
 		buffer = new unsigned char[ buffer_size ];
 
 		if( unzReadCurrentFile( unzip_file, buffer, buffer_size ) != buffer_size )
@@ -867,36 +874,49 @@ namespace integra_internal
 			CFileHelper::construct_subdirectories( implementation_directory, relative_file_path );
 
 			string target_path = implementation_directory + relative_file_path;
+            auto path_len = relative_file_path.length();
+            
+            if (path_len > std::numeric_limits<int>::max()) // extremely unlikely!
+            {
+                INTEGRA_TRACE_ERROR << "Unsupported path length";
+                continue;
+            }
+            
+			checksum ^= MurmurHash2( relative_file_path.c_str(), static_cast<int>(path_len), checksum_seed );
 
-			checksum ^= MurmurHash2( relative_file_path.c_str(), relative_file_path.length(), checksum_seed );
-
-			if( unzOpenCurrentFile( unzip_file ) == UNZ_OK )
-			{
-				FILE *output_file = fopen( target_path.c_str(), "wb" );
-				if( output_file )
-				{
-					unsigned char *output_buffer = new unsigned char[ file_info.uncompressed_size ];
-
-					if( unzReadCurrentFile( unzip_file, output_buffer, file_info.uncompressed_size ) != file_info.uncompressed_size )
-					{
-						INTEGRA_TRACE_ERROR << "Error decompressing file: " << file_name;
-					}
-					else
-					{
-						checksum ^= MurmurHash2( output_buffer, file_info.uncompressed_size, checksum_seed );
-
-						fwrite( output_buffer, 1, file_info.uncompressed_size, output_file );
-					}
-
-					delete[] output_buffer;
-
-					fclose( output_file );
-				}
-				else
-				{
-					INTEGRA_TRACE_ERROR << "Couldn't write to implementation file: " << target_path;
-				}
-
+            if( unzOpenCurrentFile( unzip_file ) == UNZ_OK )
+            {
+                if (file_info.uncompressed_size > std::numeric_limits<unsigned int>::max())
+                {
+                    INTEGRA_TRACE_ERROR << "Uncompressed size is too big: " << file_name;
+                }
+                else
+                {
+                    FILE *output_file = fopen( target_path.c_str(), "wb" );
+                    if( output_file )
+                    {
+                        unsigned int len = static_cast<unsigned int>( file_info.uncompressed_size );
+                        unsigned char *output_buffer = new unsigned char[ len ];
+                        
+                        if( unzReadCurrentFile( unzip_file, output_buffer, len ) != file_info.uncompressed_size )
+                        {
+                            INTEGRA_TRACE_ERROR << "Error decompressing file: " << file_name;
+                        }
+                        else
+                        {
+                            checksum ^= MurmurHash2( output_buffer, len, checksum_seed );
+                            fwrite( output_buffer, 1, len, output_file );
+                        }
+                        
+                        delete[] output_buffer;
+                        
+                        fclose( output_file );
+                    }
+                    else
+                    {
+                        INTEGRA_TRACE_ERROR << "Couldn't write to implementation file: " << target_path;
+                    }
+                }
 				unzCloseCurrentFile( unzip_file );
 			}
 			else

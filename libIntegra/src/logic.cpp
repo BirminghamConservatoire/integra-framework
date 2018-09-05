@@ -655,8 +655,8 @@ namespace integra_internal
 
 	void CLogic::update_connection_path_on_rename( CServer &server, const CNodeEndpoint &connection_path, const string &previous_name, const string &new_name )
 	{
-		int previous_name_length;
-		int old_connection_path_length;
+		size_t previous_name_length;
+		size_t old_connection_path_length;
 
 		const string &old_connection_path = *connection_path.get_value();
 
@@ -744,9 +744,9 @@ namespace integra_internal
 
 	void CLogic::update_connection_path_on_move( CServer &server, const CNodeEndpoint &connection_path, const CPath &previous_path, const CPath &new_path )
 	{
-		int previous_path_length;
-		int absolute_path_length;
-		int characters_after_old_path;
+		size_t previous_path_length;
+		size_t absolute_path_length;
+		size_t characters_after_old_path;
 
 		const CNode *parent = CNode::downcast( connection_path.get_node().get_parent() );
 		const string &connection_path_string = *connection_path.get_value();
@@ -780,7 +780,7 @@ namespace integra_internal
 		}
 
 		CPath new_relative_path;
-		for( int i = parent_path.get_number_of_elements(); i < new_path.get_number_of_elements(); i++ )
+		for( auto i = parent_path.get_number_of_elements(); i < new_path.get_number_of_elements(); i++ )
 		{
 			new_relative_path.append_element( new_path[ i ] );
 		}

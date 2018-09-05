@@ -257,9 +257,15 @@ namespace integra_internal
 			{
 				CPlayerState *player_state = i->second;
 				int player_rate = player_state->m_rate;
-				int elapsed_ticks = ( current_msecs - player_state->m_start_msecs ) * player_rate / 1000;
+				long long elapsed_ticks = ( current_msecs - player_state->m_start_msecs ) * player_rate / 1000;
 			
-				int new_tick_value = player_state->m_initial_ticks + elapsed_ticks;
+                if (elapsed_ticks > std::numeric_limits<int>::max())
+                {
+                    INTEGRA_TRACE_ERROR << "Tick out of range: " << elapsed_ticks;
+                    elapsed_ticks = std::numeric_limits<int>::max();
+                }
+                
+				int new_tick_value = player_state->m_initial_ticks + static_cast<int>(elapsed_ticks);
 
 				if( abs( new_tick_value - player_state->m_previous_ticks ) > player_sanity_check_seconds * player_rate )
 				{

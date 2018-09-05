@@ -50,6 +50,7 @@ namespace integra_internal
 	const unsigned int CLuaEngine::print_color = 0x6060ff;
 	const string CLuaEngine::self_key = "integra_internal::CLuaEngine";
     
+    
 	CLuaEngine::CLuaEngine()
 	{
 	}
@@ -77,11 +78,11 @@ namespace integra_internal
 		context->m_parent_path = &parent_path;
 
 		const char *timestamp_format = "_executing script at %H:%M:%S..._";
-		int timestamp_format_length = strlen( timestamp_format ) + 1;
+		unsigned long timestamp_format_length = strlen( timestamp_format ) + 1;
 		char *formatted_time_stamp = new char[ timestamp_format_length ];
 		strftime( formatted_time_stamp, timestamp_format_length, timestamp_format, localtime( &raw_time_stamp ) );
 		context->m_output = formatted_time_stamp;
-		delete formatted_time_stamp;
+        delete[] formatted_time_stamp;
 
 		/* push the stack */
 		m_context_stack.push_back( context );
@@ -418,8 +419,8 @@ namespace integra_internal
 		INTEGRA_TRACE_VERBOSE << "luascript output: " << progress_string;
 
 		/* replace illegal characters with space, to prevent invalid html */
-		int progress_string_length = strlen( progress_string );
-		for( int i = 0; i < progress_string_length; i++ )
+		auto progress_string_length = strlen( progress_string );
+		for( auto i = 0; i < progress_string_length; i++ )
 		{
 			if( strchr( illegal_characters, progress_string[ i ] ) != NULL )
 			{
@@ -539,7 +540,7 @@ namespace integra_internal
 		sprintf( metatable, metatable_template, object_name.c_str(), parameter_string.c_str(), parameter_string.c_str() );
 
 		string result( metatable );
-		delete metatable;
+        delete[] metatable;
 		return result;
 	}
 
@@ -561,14 +562,14 @@ namespace integra_internal
 
 	string CLuaEngine::get_lua_object_name( const CPath &child_path, const CPath &parent_path ) const
 	{
-		int child_elements = child_path.get_number_of_elements();
-		int parent_elements = parent_path.get_number_of_elements();
+		auto child_elements = child_path.get_number_of_elements();
+		auto parent_elements = parent_path.get_number_of_elements();
 
 		assert( child_elements > parent_elements );
 
 		string object_name;
 
-		for( int i = parent_elements; i < child_elements; i++ )
+		for( auto i = parent_elements; i < child_elements; i++ )
 		{
 			const string &path_element = child_path[ i ];
 			if( object_name.empty() )
@@ -587,8 +588,8 @@ namespace integra_internal
 
 	string CLuaEngine::get_lua_parameter_string( const CPath &child_path, const CPath &parent_path ) const
 	{
-		int child_elements = child_path.get_number_of_elements();
-		int parent_elements = parent_path.get_number_of_elements();
+		auto child_elements = child_path.get_number_of_elements();
+		auto parent_elements = parent_path.get_number_of_elements();
 
 		assert( child_elements > parent_elements );
 

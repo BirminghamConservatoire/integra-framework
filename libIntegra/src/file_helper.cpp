@@ -274,8 +274,8 @@ namespace integra_internal
 
 	string CFileHelper::ensure_filename_has_suffix( const string &filename, const string &suffix )
 	{
-		int filename_length = filename.length();
-		int suffix_length = suffix.length();
+		auto filename_length = filename.length();
+		auto suffix_length = suffix.length();
 
 		if( filename_length > suffix_length + 1 )
 		{

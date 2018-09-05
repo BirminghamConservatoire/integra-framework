@@ -971,13 +971,18 @@ namespace integra_internal
 		{
 			INTEGRA_TRACE_ERROR << "input overflow";
 		}
+        
+        if( frames_per_buffer > std::numeric_limits<unsigned int>::max() )
+        {
+            INTEGRA_TRACE_ERROR << "too many frames, truncating";
+        }
 		
 		const float *input = static_cast< const float * > ( input_buffer );
 
 		if( m_process_buffer )
 		{
 			get_dsp_engine().process_buffer( input, m_process_buffer, m_number_of_input_channels, m_number_of_output_channels, m_sample_rate );
-			m_ring_buffer->write( m_process_buffer, frames_per_buffer );
+			m_ring_buffer->write( m_process_buffer, static_cast<unsigned int>( frames_per_buffer ) );
 		}
 		else
 		{

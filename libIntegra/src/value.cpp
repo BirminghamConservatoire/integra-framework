@@ -242,12 +242,14 @@ namespace integra_api
 
 	void CIntegerValue::set_from_string( const string &source )
 	{
-        m_value = strtol( source.c_str(), NULL, 0 );
-		if( errno == ERANGE )
+        long tmp = strtol( source.c_str(), NULL, 0 );
+        if( errno == ERANGE || tmp > std::numeric_limits<int>::max() )
 		{
 			INTEGRA_TRACE_ERROR << "value too large to convert to int - truncating" << source;
 			m_value = source[ 0 ] == '-' ? INT_MIN : INT_MAX;
+            return;
 		}
+        m_value = static_cast<int>(tmp);
 	}
 
 
@@ -349,7 +351,7 @@ namespace integra_api
 		//remove trailing zeros
 		if( value.find( "." ) != string::npos )
 		{
-			int new_length = value.find_last_not_of( '0' );
+			auto new_length = value.find_last_not_of( '0' );
 			value = value.substr( 0, new_length + 1 );
 		}
 
@@ -464,9 +466,9 @@ namespace integra_api
 	}
 
 
-	int CStringValue::levenshtein_distance( const char *string1, const char *string2 )
+	unsigned long CStringValue::levenshtein_distance( const char *string1, const char *string2 )
 	{
-		int length1, length2;
+		size_t length1, length2;
 		int cost = 0;
 
 		assert( string1 && string2 );

@@ -36,6 +36,7 @@
 
 #include <assert.h>
 #include <algorithm>
+#include <limits>
 
 #ifndef _WINDOWS
 #define _S_IFMT S_IFMT
@@ -267,7 +268,8 @@ namespace integra_internal
 			size_t bytes_read = fread( buffer, 1, data_copy_buffer_size, input_file );
 			if( bytes_read > 0 )
 			{
-				zipWriteInFileInZip( zip_file, buffer, bytes_read );
+                assert(bytes_read <= data_copy_buffer_size);
+				zipWriteInFileInZip( zip_file, buffer, static_cast<unsigned int>(bytes_read) );
 			}
 			else
 			{
@@ -327,8 +329,15 @@ namespace integra_internal
 			unzClose( unzip_file );
 			return CError::FAILED;
 		}
+        
+        if ( file_info.uncompressed_size > std::numeric_limits<unsigned int>::max() )
+        {
+            INTEGRA_TRACE_ERROR << "File too large to open: " << internal_ixd_file_name;
+            unzClose( unzip_file );
+            return CError::FAILED;
+        }
 
-		*ixd_buffer_length = file_info.uncompressed_size;
+		*ixd_buffer_length = static_cast<unsigned int>( file_info.uncompressed_size );
 		*ixd_buffer = new unsigned char[ *ixd_buffer_length ];
 
 		if( unzReadCurrentFile( unzip_file, *ixd_buffer, *ixd_buffer_length ) != *ixd_buffer_length )
@@ -361,7 +370,14 @@ namespace integra_internal
 
 		/* find size of the file */
 		fseek( file, 0, SEEK_END );
-		*ixd_buffer_length = ftell( file );
+        long size = ftell( file );
+        if ( size > std::numeric_limits<unsigned int>::max() )
+        {
+            INTEGRA_TRACE_ERROR << "File to large to seek: " << file_path;
+            fseek( file, 0, SEEK_SET );
+            return CError::FAILED;
+        }
+		*ixd_buffer_length = static_cast<unsigned int>( size );
 		fseek( file, 0, SEEK_SET );
 
 		*ixd_buffer = new unsigned char[ *ixd_buffer_length ];
@@ -609,15 +625,15 @@ namespace integra_internal
 
 	string CFileIO::get_top_level_node_name( const string &filename )
 	{
-		int index_of_extension = 0;
-		int i, length;
+		size_t index_of_extension = 0;
+		size_t i, length;
 
 		/* strip path from filename */
 		size_t last_slash = filename.find_last_of( '/' );
 		size_t last_backslash = filename.find_last_of( '\\' );
 
-		int index_after_last_slash = 0;
-		int index_after_last_backslash = 0;
+		size_t index_after_last_slash = 0;
+		size_t index_after_last_backslash = 0;
 
 		if( last_slash != string::npos ) index_after_last_slash = ( last_slash + 1 );
 		if( last_backslash != string::npos ) index_after_last_backslash = ( last_backslash + 1 );
@@ -871,13 +887,13 @@ namespace integra_internal
 		/* write out node->interface->module_guid */
 		string guid_string = CGuidHelper::guid_to_string( node.get_interface_definition().get_module_guid() );
 		tmp = convert_input( guid_string, xml_encoding );
-		xmlTextWriterWriteFormatAttribute(writer, BAD_CAST module_id.c_str(), (char * ) tmp );
+        xmlTextWriterWriteFormatAttribute(writer, BAD_CAST module_id.c_str(), "%s", tmp );
 		free( tmp );
 
 		/* write out node->interface->origin_guid */
 		guid_string = CGuidHelper::guid_to_string( node.get_interface_definition().get_origin_guid() );
 		tmp = convert_input( guid_string, xml_encoding );
-		xmlTextWriterWriteFormatAttribute( writer, BAD_CAST origin_id.c_str(), (char * ) tmp );
+        xmlTextWriterWriteFormatAttribute( writer, BAD_CAST origin_id.c_str(), "%s", tmp );
 		free( tmp );
 
 		/* write out node->name */
@@ -996,7 +1012,15 @@ namespace integra_internal
 			return NULL;
 		}
 
-		size = in.length() + 1;
+        auto length = in.length();
+        
+        if (length > std::numeric_limits<int>::max())
+        {
+            INTEGRA_TRACE_ERROR << "String length out of range: " << length;
+            return NULL;
+        }
+        
+		size = static_cast<int>(length) + 1;
 		out_size = size * 2 - 1;
 		out = new unsigned char[ out_size ];
 

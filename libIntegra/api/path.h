@@ -66,13 +66,13 @@ namespace integra_api
 			bool operator==( const CPath &to_compare ) const;
 
 			/** \return Number of elements in the path*/
-			int get_number_of_elements() const;			
+            std::size_t get_number_of_elements() const;
 
 			/** \brief array access operator.  
 			 * This operator allows you to access path elements in array syntax eg path[ 0 ]
 			 * \note will return an empty string for out-of-range index
 			 */
-			const string &operator[]( int index ) const;
+            const string &operator[]( std::size_t index ) const;
 
 			/** \return A dot-separated representation of the path as a single string eg "OuterContainer.InnerContainer.ModuleName" */
 			const string &get_string() const;

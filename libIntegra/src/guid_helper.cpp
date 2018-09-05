@@ -73,7 +73,7 @@ namespace integra_api
 		}
 
 		CError error = CError::SUCCESS;
-		output.Data1 = read_hex_chars( string, 4, error );
+        output.Data1 = (std::uint32_t)read_hex_chars( string, 4, error );
 		output.Data2 = read_hex_chars( string.substr( 9, 4 ), 2, error );
 		output.Data3 = read_hex_chars( string.substr( 14, 4 ), 2, error );
 
