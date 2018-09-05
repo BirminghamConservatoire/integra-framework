@@ -141,7 +141,7 @@ namespace integra_internal
 		if( lookup == m_nodes.end() )
 		{
 			/* not found */
-			return NULL;
+			return nullptr;
 		}
 
 		return CNode::downcast( lookup->second );
@@ -154,7 +154,7 @@ namespace integra_internal
 		if( lookup == m_nodes.end() )
 		{
 			/* not found */
-			return NULL;
+			return nullptr;
 		}
 
 		return CNode::downcast_writable( lookup->second );
@@ -167,7 +167,7 @@ namespace integra_internal
 		if( lookup == m_nodes_by_id.end() )
 		{
 			/* not found */
-			return NULL;
+			return nullptr;
 		}
 
 		return lookup->second;
@@ -180,7 +180,7 @@ namespace integra_internal
 		if( lookup == m_node_endpoints.end() )
 		{
 			/* not found */
-			return NULL;
+			return nullptr;
 		}
 
 		return CNodeEndpoint::downcast( lookup->second );
@@ -193,7 +193,7 @@ namespace integra_internal
 		if( lookup == m_node_endpoints.end() )
 		{
 			/* not found */
-			return NULL;
+			return nullptr;
 		}
 
 		return CNodeEndpoint::downcast_writable( lookup->second );
