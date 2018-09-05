@@ -45,7 +45,7 @@ namespace k
     const std::string tapDelayGUID              = "c811c1b6-24b4-5a7a-065a-2c12cf061d4b";
     const std::string tapDelayName              = "TapDelay1";
     const std::string tapDelayEndpoint          = tapDelayName + "." + "delayTime";
-    const std::string newEndpointName           = "Test";
+    const std::string newNodeName               = "Test";
     const std::string newTapDelayEndpoint       = containerName + "." + tapDelayName;
     const float testFloatValue                  = 1.5f;
     const int expectedTopLevelNodes             = 4;   // 1 track, 1 connection, 1 Player, 1 MidiMonitor
@@ -294,19 +294,19 @@ TEST_F(CommandTest, SetCommandSetsValue)
 // IRenameCommand
 TEST_F(CommandTest, RenameCommandSuccess)
 {
-    CError err = server()->process_command(IRenameCommand::create(k::tapDelayName, k::newEndpointName));
+    CError err = server()->process_command(IRenameCommand::create(k::tapDelayName, k::newNodeName));
     ASSERT_EQ(err, CError::SUCCESS);
 }
 
 TEST_F(CommandTest, RenameCommandSetsName)
 {
-    CError err = server()->process_command(IRenameCommand::create(k::tapDelayName, k::newEndpointName));
+    CError err = server()->process_command(IRenameCommand::create(k::tapDelayName, k::newNodeName));
     assert(err == CError::SUCCESS);
     
-    auto endpoint = server()->find_node_endpoint(k::newEndpointName);
+    auto endpoint = server()->find_node(k::newNodeName);
     
     ASSERT_NE(endpoint, nullptr);
-    ASSERT_EQ(server()->find_node_endpoint(k::tapDelayEndpoint), nullptr);
+    ASSERT_EQ(server()->find_node(k::tapDelayEndpoint), nullptr);
 }
 
 // IMoveCommand
