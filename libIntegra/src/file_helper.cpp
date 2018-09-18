@@ -30,6 +30,7 @@
 #define mkdir(x) mkdir(x, 0777)
 #endif
 #include <dirent.h>
+#include <dlfcn.h>
 
 #include "file_helper.h"
 #include "file_io.h"
@@ -291,4 +292,21 @@ namespace integra_internal
 
 		return filename + "." + suffix;
 	}
+    
+    string CFileHelper::get_resources_path()
+    {
+        string path;
+        
+#ifdef __APPLE__
+        Dl_info info;
+        
+        if (dladdr((void *)&CFileHelper::get_resources_path, &info))
+        {
+            path = CFileHelper::extract_directory_from_path(info.dli_fname) + "Resources/";
+        }
+#endif
+        
+        return path;
+    }
+
 }

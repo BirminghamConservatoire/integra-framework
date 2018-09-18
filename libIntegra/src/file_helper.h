@@ -41,7 +41,7 @@ namespace integra_internal
 			static string extract_suffix_from_path( const string &path );
 
 			static string ensure_filename_has_suffix( const string &filename, const string &suffix );
-
+            static string get_resources_path();
 
 			static bool is_directory( const string &directory_name );
 			static void delete_directory( const string &directory_name );
