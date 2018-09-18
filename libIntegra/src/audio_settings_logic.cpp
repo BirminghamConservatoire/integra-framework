@@ -27,8 +27,8 @@
 #include "server.h"
 #include "node.h"
 #include "audio_engine.h"
-#include "trace.h"
 
+#include "api/trace.h"
 #include "api/string_helper.h"
 #include "api/command.h"
 
