@@ -25,8 +25,6 @@
 		7D301D16211D898D008C56E7 /* Integra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D8451D1187DB8CB008639D2 /* Integra.framework */; };
 		7D301D19211D8A09008C56E7 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D301D17211D89B7008C56E7 /* AudioToolbox.framework */; };
 		7D301D1A211D8A11008C56E7 /* AudioUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D301D18211D89B7008C56E7 /* AudioUnit.framework */; };
-		7D301D1D211D946F008C56E7 /* CollectionSchema.xsd in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7D900DCD18DC663C00AF8DEF /* CollectionSchema.xsd */; };
-		7D301D1E211D946F008C56E7 /* id2guid.csv in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7D900DCE18DC663C00AF8DEF /* id2guid.csv */; };
 		7D31CCD0213E8FDA004A4A64 /* IntegraTest-newer.integra in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7D31CCCF213E8FCD004A4A64 /* IntegraTest-newer.integra */; };
 		7D31CCD1213E8FDA004A4A64 /* IntegraTest-older.integra in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7D31CCCE213E8FCD004A4A64 /* IntegraTest-older.integra */; };
 		7D3D0FDE2120B78300F28EA6 /* VERSION in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7D3D0FDD2120B77000F28EA6 /* VERSION */; };
@@ -200,8 +198,6 @@
 			files = (
 				7D31CCD0213E8FDA004A4A64 /* IntegraTest-newer.integra in CopyFiles */,
 				7D31CCD1213E8FDA004A4A64 /* IntegraTest-older.integra in CopyFiles */,
-				7D301D1D211D946F008C56E7 /* CollectionSchema.xsd in CopyFiles */,
-				7D301D1E211D946F008C56E7 /* id2guid.csv in CopyFiles */,
 				7D3D0FDE2120B78300F28EA6 /* VERSION in CopyFiles */,
 				7D3D101521242CFC00F28EA6 /* IntegraTest.integra in CopyFiles */,
 			);

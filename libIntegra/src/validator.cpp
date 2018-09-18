@@ -27,10 +27,12 @@
 #include "api/trace.h"
 #include "api/string_helper.h"
 
+#include "file_helper.h"
 
 namespace integra_internal
 {
-	const char *CValidator::schema_file = "CollectionSchema.xsd";
+    string schema_path = CFileHelper::get_resources_path() + "CollectionSchema.xsd";
+    const char *CValidator::schema_file = schema_path.c_str();
 
 	static void schemaErrorCallback( void *none, const char *message, ...)
 	{

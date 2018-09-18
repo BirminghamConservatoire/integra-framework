@@ -608,6 +608,7 @@ namespace integra_internal
 
 	void CModuleManager::load_legacy_module_id_file()
 	{
+        string legacy_class_id_path = CFileHelper::get_resources_path() + legacy_class_id_filename;
 		char line[ CStringHelper::string_buffer_length ];
 		FILE *file = NULL;
 		const char *guid_as_string;
@@ -615,11 +616,11 @@ namespace integra_internal
 		GUID guid;
 
 		m_legacy_module_id_table.clear();
-
-		file = fopen( legacy_class_id_filename.c_str(), "r" );
+        
+		file = fopen( legacy_class_id_path.c_str(), "r" );
 		if( !file )
 		{
-			INTEGRA_TRACE_ERROR << "failed to open legacy class id file: " << legacy_class_id_filename;
+			INTEGRA_TRACE_ERROR << "failed to open legacy class id file: " << legacy_class_id_path;
 			return;
 		}
 
