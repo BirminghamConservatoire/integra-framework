@@ -26,11 +26,11 @@
 #include <direct.h>
 #else
 #include <sys/stat.h>
+#include <dlfcn.h>
 #define _S_IFMT S_IFMT
 #define mkdir(x) mkdir(x, 0777)
 #endif
 #include <dirent.h>
-#include <dlfcn.h>
 
 #include "file_helper.h"
 #include "file_io.h"
