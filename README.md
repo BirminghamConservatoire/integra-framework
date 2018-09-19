@@ -50,13 +50,12 @@ On Windows the framework builds as a collection of [dll](https://en.wikipedia.or
 -   Install Visual Studio (2017 or later)
 -   Install the [Windows WDK](https://developer.microsoft.com/en-us/windows/hardware/windows-driver-kit
 )
--   Install [mingw](http://www.mingw.org) (including msys, gcc and pthreads). The easiest way to do this is to download the mingw installer and install the mingw32-base, msys-base and mingw32-pthreads-w32
--   Download the latest [pthread-win32](https://www.sourceware.org/pthreads-win32/) and install following the instructions here: http://web.cs.du.edu/~sturtevant/pthread.html
+-   Install [mingw](http://www.mingw.org) (including msys, gcc and pthreads). The easiest way to do this is to download the mingw installer and install the mingw32-base-bin, msys-base and mingw32-pthreads-w32 meta packages
 
 ### Environment Variables
 
--   msys/1.0/bin/ should be in the PATH variable
--   MinGW/bin/ should be in the PATH variable
+-   C:\MinGW\msys\1.0\bin should be in the PATH variable
+-   C:\MinGW\bin should be in the PATH variable
 
 ### ASIO SDK
 
@@ -68,12 +67,11 @@ In order for the libIntegra build system to locate required headers for the Flex
 
 - Copy the file libIntegra/msvc/flext_settings_VS.props to libIntegra/externals/flext
 
-This will overwrite the existing flext_settings_VS.props in libIntegra/externals/flext. Because this file is tracked by git, it will therefore show up as modified in the git staging area. To ignore these local changes, use:
+**This will overwrite the existing flext_settings_VS.props in libIntegra/externals/flext**. Because this file is tracked by git, it will therefore show up as modified in the git staging area. To ignore these local changes, use:
 
 `git update-index --skip-worktree libIntegra/externals/flext/flext_settings_VS.props`
 
 The changes will then be ignored by git.
-
 
 ### Building the Visual Studio solution
 
