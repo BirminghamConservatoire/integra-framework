@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		348423D52159301200E2EB7C /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34FE25A5215664BB00970E20 /* main.cpp */; };
+		348423D62159301500E2EB7C /* util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34FE25A6215664BB00970E20 /* util.cpp */; };
 		7D110742189FC8C300B4A72E /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D110740189FC8A700B4A72E /* CoreMIDI.framework */; };
 		7D110745189FC8ED00B4A72E /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D110743189FC8DB00B4A72E /* CoreAudio.framework */; };
 		7D110748189FC91C00B4A72E /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D110746189FC90D00B4A72E /* CoreFoundation.framework */; };
@@ -28,7 +30,6 @@
 		7D31CCD0213E8FDA004A4A64 /* IntegraTest-newer.integra in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7D31CCCF213E8FCD004A4A64 /* IntegraTest-newer.integra */; };
 		7D31CCD1213E8FDA004A4A64 /* IntegraTest-older.integra in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7D31CCCE213E8FCD004A4A64 /* IntegraTest-older.integra */; };
 		7D3D0FDE2120B78300F28EA6 /* VERSION in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7D3D0FDD2120B77000F28EA6 /* VERSION */; };
-		7D3D10132123412600F28EA6 /* util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7D3D10112123412600F28EA6 /* util.cpp */; };
 		7D3D101521242CFC00F28EA6 /* IntegraTest.integra in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7D3D101421242CE600F28EA6 /* IntegraTest.integra */; };
 		7D45816818DC7179006F0D60 /* modules in Resources */ = {isa = PBXBuildFile; fileRef = 7D45816718DC7179006F0D60 /* modules */; };
 		7D54F00C2118E5DE008D59D7 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D54F00B2118E5DE008D59D7 /* libz.tbd */; };
@@ -156,7 +157,6 @@
 		7D8454ED187DC023008639D2 /* zip.h in Headers */ = {isa = PBXBuildFile; fileRef = 7D845405187DC023008639D2 /* zip.h */; };
 		7D8865C5211C3F4B008ED309 /* gtest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D8865C3211C3F44008ED309 /* gtest.framework */; };
 		7D8865C8211C421F008ED309 /* gtest.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7D8865C3211C3F44008ED309 /* gtest.framework */; };
-		7D8865CA211C4489008ED309 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7D8865C9211C4489008ED309 /* main.cpp */; };
 		7D900DCF18DC663C00AF8DEF /* CollectionSchema.xsd in Resources */ = {isa = PBXBuildFile; fileRef = 7D900DCD18DC663C00AF8DEF /* CollectionSchema.xsd */; };
 		7D900DD018DC663C00AF8DEF /* id2guid.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7D900DCE18DC663C00AF8DEF /* id2guid.csv */; };
 		7D975F6318DC515800EB28CB /* fsp_libsndfile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7D975F5D18DC515800EB28CB /* fsp_libsndfile.cpp */; settings = {COMPILER_FLAGS = "-w"; }; };
@@ -225,6 +225,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		34FE25A5215664BB00970E20 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		34FE25A6215664BB00970E20 /* util.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = util.cpp; sourceTree = "<group>"; };
+		34FE25A7215664BB00970E20 /* util.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = util.hpp; sourceTree = "<group>"; };
 		7D110740189FC8A700B4A72E /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
 		7D110743189FC8DB00B4A72E /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		7D110746189FC90D00B4A72E /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
@@ -261,8 +264,6 @@
 		7D31CCCE213E8FCD004A4A64 /* IntegraTest-older.integra */ = {isa = PBXFileReference; lastKnownFileType = file; name = "IntegraTest-older.integra"; path = "../../tests/resources/IntegraTest-older.integra"; sourceTree = "<group>"; };
 		7D31CCCF213E8FCD004A4A64 /* IntegraTest-newer.integra */ = {isa = PBXFileReference; lastKnownFileType = file; name = "IntegraTest-newer.integra"; path = "../../tests/resources/IntegraTest-newer.integra"; sourceTree = "<group>"; };
 		7D3D0FDD2120B77000F28EA6 /* VERSION */ = {isa = PBXFileReference; lastKnownFileType = text; name = VERSION; path = ../../../VERSION; sourceTree = "<group>"; };
-		7D3D10112123412600F28EA6 /* util.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = util.cpp; path = ../../../tests/util.cpp; sourceTree = "<group>"; };
-		7D3D10122123412600F28EA6 /* util.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = util.hpp; path = ../../../tests/util.hpp; sourceTree = "<group>"; };
 		7D3D101421242CE600F28EA6 /* IntegraTest.integra */ = {isa = PBXFileReference; lastKnownFileType = file; name = IntegraTest.integra; path = ../../tests/resources/IntegraTest.integra; sourceTree = "<group>"; };
 		7D45816718DC7179006F0D60 /* modules */ = {isa = PBXFileReference; lastKnownFileType = folder; name = modules; path = ../../../modules; sourceTree = "<group>"; };
 		7D54F0092118E563008D59D7 /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
@@ -394,7 +395,6 @@
 		7D845405187DC023008639D2 /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
 		7D8865B9211C3DD3008ED309 /* UnitTests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = UnitTests; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D8865C3211C3F44008ED309 /* gtest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = gtest.framework; path = ../../externals/macosx/googletest/gtest.framework; sourceTree = "<group>"; };
-		7D8865C9211C4489008ED309 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = ../../../tests/main.cpp; sourceTree = "<group>"; };
 		7D900DCD18DC663C00AF8DEF /* CollectionSchema.xsd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = CollectionSchema.xsd; path = ../../data/CollectionSchema.xsd; sourceTree = "<group>"; };
 		7D900DCE18DC663C00AF8DEF /* id2guid.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = id2guid.csv; path = ../../data/id2guid.csv; sourceTree = "<group>"; };
 		7D975F5D18DC515800EB28CB /* fsp_libsndfile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fsp_libsndfile.cpp; sourceTree = "<group>"; };
@@ -785,11 +785,12 @@
 		7D8865BA211C3DD3008ED309 /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
-				7D8865C9211C4489008ED309 /* main.cpp */,
-				7D3D10112123412600F28EA6 /* util.cpp */,
-				7D3D10122123412600F28EA6 /* util.hpp */,
+				34FE25A5215664BB00970E20 /* main.cpp */,
+				34FE25A6215664BB00970E20 /* util.cpp */,
+				34FE25A7215664BB00970E20 /* util.hpp */,
 			);
-			path = UnitTests;
+			name = UnitTests;
+			path = ../../tests;
 			sourceTree = "<group>";
 		};
 		7D900DCC18DC65AD00AF8DEF /* Resources */ = {
@@ -1118,8 +1119,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7D8865CA211C4489008ED309 /* main.cpp in Sources */,
-				7D3D10132123412600F28EA6 /* util.cpp in Sources */,
+				348423D52159301200E2EB7C /* main.cpp in Sources */,
+				348423D62159301500E2EB7C /* util.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1384,14 +1385,21 @@
 				CODE_SIGN_STYLE = Manual;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = "";
+				EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "*.nib *.lproj *.gch *.xcode* *.xcassets (*) .DS_Store CVS .svn .git .hg *.pbproj *.pbxproj";
 				FRAMEWORK_SEARCH_PATHS = ../../externals/macosx/googletest;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					../..,
+					"../../externals/macosx/googletest/**",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				USER_HEADER_SEARCH_PATHS = ../../externals/macosx/googletest/gtest.framework/Headers;
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
 		};
@@ -1409,14 +1417,21 @@
 				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = "";
+				EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "*.nib *.lproj *.gch *.xcode* *.xcassets (*) .DS_Store CVS .svn .git .hg *.pbproj *.pbxproj";
 				FRAMEWORK_SEARCH_PATHS = ../../externals/macosx/googletest;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					../..,
+					"../../externals/macosx/googletest/**",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				USER_HEADER_SEARCH_PATHS = ../../externals/macosx/googletest/gtest.framework/Headers;
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;
 		};
