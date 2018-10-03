@@ -25,7 +25,7 @@
 #include <assert.h>
 #include <dirent.h>
 
-#ifdef _WINDOWS
+#ifdef _WIN32
 #include <direct.h>
 #else
 #include <sys/stat.h>
@@ -51,7 +51,7 @@
 using namespace integra_api;
 
 
-#ifndef _WINDOWS
+#ifndef _WIN32
 #include <sys/stat.h>
 #define _S_IFMT S_IFMT
 #endif

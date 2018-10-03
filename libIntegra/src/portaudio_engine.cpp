@@ -32,7 +32,7 @@
 #include <algorithm>	
 #include <unistd.h>
 
-#ifdef _WINDOWS
+#ifdef _WIN32
 	#include <windows.h>	/* for CoInitialize, CoUninitialize, Sleep */
 #endif
 
@@ -710,7 +710,7 @@ namespace integra_internal
 
 	void CPortAudioEngine::open_streams()
 	{
-		#ifdef _WINDOWS
+		#ifdef _WIN32
 			CoInitialize( NULL );
 		#endif
 
@@ -852,7 +852,7 @@ namespace integra_internal
 			start_no_device_thread();
 		}
 
-		#ifdef _WINDOWS
+		#ifdef _WIN32
 			CoUninitialize();
 		#endif
 	}

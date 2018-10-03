@@ -45,7 +45,7 @@
 #include <assert.h>
 #include <iostream>
 
-#ifdef _WINDOWS
+#ifdef _WIN32
 #include <windows.h>
 #endif
 
@@ -53,7 +53,7 @@
 
 namespace integra_internal
 {
-	#ifdef _WINDOWS
+	#ifdef _WIN32
 		static void invalid_parameter_handler( const wchar_t * expression, const wchar_t * function, const wchar_t * file, unsigned int line, uintptr_t pReserved )
 		{
 			INTEGRA_TRACE_ERROR << "CRT encoutered invalid parameter!";
@@ -70,7 +70,7 @@ namespace integra_internal
 
 		pthread_mutex_init( &m_shutdown_mutex, NULL );
 
-		#ifdef _WINDOWS
+		#ifdef _WIN32
 			_set_invalid_parameter_handler( invalid_parameter_handler );
 		#endif
 
@@ -406,7 +406,7 @@ namespace integra_internal
 
 	string CServer::get_libintegra_version() const
 	{
-		#ifdef _WINDOWS
+		#ifdef _WIN32
 
 			/*windows only - read version number from current module*/
 

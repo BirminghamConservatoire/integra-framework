@@ -29,7 +29,7 @@
 
 
 #include <assert.h>
-#ifdef _WINDOWS
+#ifdef _WIN32
 #include <direct.h>
 #else
 #include <sys/stat.h>
@@ -45,7 +45,7 @@ namespace integra_internal
 
 	CScratchDirectory::CScratchDirectory()
 	{
-		#ifdef _WINDOWS
+		#ifdef _WIN32
 
 			char path_buffer[ CStringHelper::string_buffer_length ];
 			int i;

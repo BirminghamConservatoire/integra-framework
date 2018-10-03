@@ -27,7 +27,7 @@ void __attribute__((constructor)) my_init(void)
 {
 }
 #else
-#ifdef _WINDOWS
+#ifdef _WIN32
 #include "windows.h"
 BOOL WINAPI DllMain( HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved )
 {

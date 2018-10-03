@@ -38,7 +38,7 @@
 #include <algorithm>
 #include <limits>
 
-#ifndef _WINDOWS
+#ifndef _WIN32
 #define _S_IFMT S_IFMT
 #endif
 

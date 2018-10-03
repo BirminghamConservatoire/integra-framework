@@ -43,13 +43,13 @@
 #define STRINGIFY(x) #x
 /** Used internally by subsequent macros */
 #define TOSTRING(x) STRINGIFY(x)
-#ifdef _WINDOWS
+#ifdef _WIN32
 /** Used internally by subsequent macros */
 #define INTEGRA_FUNCTION __FUNCTION__
 #else 
 /** Used internally by subsequent macros */
 #define INTEGRA_FUNCTION __PRETTY_FUNCTION__
-#endif /*_WINDOWS*/
+#endif /*_WIN32*/
 
 /** Used internally by subsequent macros */
 #define INTEGRA_LOCATION __FILE__ ": " TOSTRING(__LINE__)

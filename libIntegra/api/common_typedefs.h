@@ -37,7 +37,7 @@
 #include <unordered_set>
 #include <unordered_map>
 
-#ifdef _WINDOWS
+#ifdef _WIN32
     #include <guiddef.h>
 #else
 namespace integra_api
@@ -51,7 +51,7 @@ namespace integra_api
 }
 #endif
 
-#ifdef _WINDOWS
+#ifdef _WIN32
 	#ifdef LIBINTEGRA_EXPORTS	
 		#define INTEGRA_API __declspec(dllexport)			/** Windows-specific DLL export qualifier */
 	#else

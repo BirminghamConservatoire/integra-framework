@@ -20,7 +20,7 @@
 
 
 
-#ifndef _WINDOWS
+#ifndef _WIN32
 #include <string.h>
 #include <stdarg.h>
 #include <stdio.h>

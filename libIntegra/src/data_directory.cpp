@@ -23,7 +23,7 @@
 #include "platform_specifics.h"
 
 #include <assert.h>
-#ifdef _WINDOWS
+#ifdef _WIN32
 #include <direct.h>
 #else
 #include <sys/stat.h>

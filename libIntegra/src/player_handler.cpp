@@ -32,7 +32,7 @@
 #include <assert.h>
 #include <unistd.h>
 
-#ifdef _WINDOWS
+#ifdef _WIN32
 #include <windows.h>	/*for Sleep function */
 #else
 #include <sys/time.h> /* for gettimeofday() */
@@ -219,7 +219,7 @@ namespace integra_internal
 
 	int64_t CPlayerHandler::get_current_msecs() const
 	{
-		#ifdef _WINDOWS
+		#ifdef _WIN32
 
 			assert( CLOCKS_PER_SEC == 1000 );
 			return clock();

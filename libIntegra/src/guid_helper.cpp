@@ -25,7 +25,7 @@
 #include "MurmurHash2.h"
 
 #include <assert.h>
-#ifdef _WINDOWS
+#ifdef _WIN32
 #include <time.h>
 #else
 #include <sys/time.h>
