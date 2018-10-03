@@ -26,7 +26,8 @@
 #include "api/trace.h"
 
 #include <assert.h>
-#ifdef _WIN32#include <time.h>
+#ifdef _WIN32
+#include <time.h>
 #else
 #include <sys/time.h>
 #endif
