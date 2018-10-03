@@ -6,8 +6,6 @@
 ////  Copyright © 2018 Birmingham Conservatoire. All rights reserved.
 ////
 
-#include "pch.h"
-
 #include "util.hpp"
 
 #include "api/server_startup_info.h"
@@ -21,10 +19,7 @@
 #include "api/command.h"
 #include "api/path.h"
 
-#include "../src/node.h"
-
-
-
+#include "gtest/gtest.h"
 
 //#include <chrono>
 //#include <thread>
@@ -190,13 +185,11 @@ TEST_F(ServerTest, FindNodeReturnsNull)
     ASSERT_EQ(rv, nullptr);
 }
 
-#ifndef _WIN32
-TEST_F(ServerTest, GetSiblingsEmpty)
+TEST_F(ServerTest, DISABLED_GetSiblingsEmpty)
 {
-    auto rv = server()->get_siblings(integra_internal::CNode());
-    ASSERT_TRUE(rv.empty());
+//    auto rv = server()->get_siblings(integra_internal::CNode());
+//    ASSERT_TRUE(rv.empty());
 }
-#endif
 
 TEST_F(ServerTest, FindNodeEndpointReturnsNull)
 {

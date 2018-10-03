@@ -8,8 +8,6 @@
 
 #include "util.hpp"
 
-#include "pch.h"
-
 #include <stdio.h>
 #include <sys/types.h>
 #include <string>
