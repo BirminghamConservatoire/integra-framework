@@ -48,6 +48,7 @@ On Windows the framework builds as a collection of [dll](https://en.wikipedia.or
 ### Prerequisites
 
 -   Install Visual Studio (2017 or later)
+-   Install the [Test Adapter for Google Test](https://docs.microsoft.com/en-us/visualstudio/test/how-to-use-google-test-for-cpp?view=vs-2017)
 -   Install the [Windows WDK](https://developer.microsoft.com/en-us/windows/hardware/windows-driver-kit
 )
 -   Install [mingw](http://www.mingw.org) (including msys, gcc and pthreads). The easiest way to do this is to download the mingw installer and install the mingw32-base-bin, msys-base and mingw32-pthreads-w32 meta packages

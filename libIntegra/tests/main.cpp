@@ -6,22 +6,25 @@
 ////  Copyright © 2018 Birmingham Conservatoire. All rights reserved.
 ////
 
+#include "pch.h"
+
 #include "util.hpp"
 
-#include "server_startup_info.h"
-#include "integra_session.h"
-#include "interface_definition.h"
-#include "error.h"
-#include "server.h"
-#include "trace.h"
-#include "server_lock.h"
-#include "guid_helper.h"
-#include "command.h"
-#include "path.h"
+#include "api/server_startup_info.h"
+#include "api/integra_session.h"
+#include "api/interface_definition.h"
+#include "api/error.h"
+#include "api/server.h"
+#include "api/trace.h"
+#include "api/server_lock.h"
+#include "api/guid_helper.h"
+#include "api/command.h"
+#include "api/path.h"
 
 #include "../src/node.h"
 
-#include "gtest.h"
+
+
 
 //#include <chrono>
 //#include <thread>
@@ -31,7 +34,11 @@ using namespace integra_api;
 
 namespace k
 {
+#ifdef _WIN32
+	const std::string moduleDirectory			= "modules";
+#else
     const std::string moduleDirectory           = "Integra.framework/Resources/modules";
+#endif
     const std::string thirdPartyModuleDirectory = "third_party";
     const std::string versionFileName           = "VERSION";
     const std::string containerName             = "IntegraTest";
@@ -183,11 +190,13 @@ TEST_F(ServerTest, FindNodeReturnsNull)
     ASSERT_EQ(rv, nullptr);
 }
 
+#ifndef _WIN32
 TEST_F(ServerTest, GetSiblingsEmpty)
 {
     auto rv = server()->get_siblings(integra_internal::CNode());
     ASSERT_TRUE(rv.empty());
 }
+#endif
 
 TEST_F(ServerTest, FindNodeEndpointReturnsNull)
 {
@@ -402,10 +411,11 @@ TEST_F(CommandTest, DISABLED_SaveCommandCkSumPass)
 
 
 #pragma mark - main
-
+#ifndef _WIN32
 int main(int argc, char **argv)
 {
     ::testing::InitGoogleTest(&argc, argv);
 //    ::testing::GTEST_FLAG(filter) = "ServerTest.ProblemFileLoadsCorrectly";
     return RUN_ALL_TESTS();
 }
+#endif
