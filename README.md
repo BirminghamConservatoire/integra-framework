@@ -48,7 +48,7 @@ On Windows the framework builds as a collection of [dll](https://en.wikipedia.or
 ### Prerequisites
 
 -   Install Visual Studio (2017 or later)
--   Install the [Test Adapter for Google Test](https://docs.microsoft.com/en-us/visualstudio/test/how-to-use-google-test-for-cpp?view=vs-2017)
+-   Install the [Test Adapter for Google Test](https://docs.microsoft.com/en-us/visualstudio/test/how-to-use-google-test-for-cpp?view=vs-2017) (needed for unit tests)
 -   Install the [Windows WDK](https://developer.microsoft.com/en-us/windows/hardware/windows-driver-kit
 )
 -   Install [mingw](http://www.mingw.org) (including msys, gcc and pthreads). The easiest way to do this is to download the mingw installer and install the mingw32-base-bin, msys-base and mingw32-pthreads-w32 meta packages
@@ -83,6 +83,12 @@ Once the above requirements have been satisfied, it should be trivial to build t
 
 The output files will be placed in libIntegra/bin
 
+### Testing
+
+To run the test suite:
+
+- Select from the Test menu: Run -> All Tests
+
 ## License
 
 The Integra Framework is licensed under the GNU GPL version 2. For further details see [here](libIntegra/LICENSE.txt)
@@ -92,6 +98,10 @@ The Integra [module library](modules) is public domain under the terms of the Un
 ## Reporting issues
 
 Issues should be reported on the project [issue tracker](https://github.com/BirminghamConservatoire/integra-framework/issues)
+
+## Porting notes
+
+Many of libIntegra's dependencies were originally developed within a Unix or Linux ecosystem. These include libPd, Flext, libxml2 and the pthreads library. Whilst it is possible to compile these on Windows, it makes the libIntegra build system under Visual Studio somewhat complex. A future goal of the project is to factor out some of these dependencies so that building the framework can be simplified across different platforms.
 
 
 
