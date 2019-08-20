@@ -1,6 +1,6 @@
 # Integra Framework
 
-The Integra Framework consists of libIntegra, a shared [dynamically loaded library](https://en.wikipedia.org/wiki/Dynamic_loading) and a set of data files consumed by the library. Further information about libIntegra can be found [here](http://birminghamconservatoire.github.io/integra-framework/api-documentation/).
+The Integra Framework consists of libIntegra, a shared [dynamically loaded library](https://en.wikipedia.org/wiki/Dynamic_loading) and a set of data files consumed by the library. Further information about libIntegra can be found [here](http://birminghamconservatoire.github.io/IntegraLive/api-documentation/).
 
 The additional files that form part of the framework are:
 
