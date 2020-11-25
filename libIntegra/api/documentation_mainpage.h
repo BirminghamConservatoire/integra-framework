@@ -41,11 +41,11 @@ libIntegra is cross-platform and open-source.
 + Handles audio and midi I/O, via the open source libraries <a href="http://portaudio.com">PortAudio</a> and 
 <a href="http://portmedia.sourceforge.net/portmidi">PortMidi</a>
 
-+ Processes audio in realtime using <a href="http://libpd.cc">LibPD</a>
++ Processes audio in realtime using <a href="https://github.com/libpd/libpd">LibPD</a>
 
 + Loading and saving of '.integra' files.  The .integra file format stores module graphs, and also includes the 
 following features:
-  + Allows module instances to embed persistant external data files (for example, audio files used by a sampler).  
+  + Allows module instances to embed persistent external data files (for example, audio files used by a sampler).  
     This means that unlike typical DAW project files, a .integra file needs no external file dependencies, for  
     ease of transference/sharing.
   + Embeds the definition and implementation of modules themselves.  This means that if a .integra file 
@@ -60,7 +60,7 @@ Integra modules consist of an interface and an implementation.  Module interface
 <a href="http://www.integralive.org/tutorials/module-development-quick-start">Integra Module Creator</a> tool,
 and module implementations are written in <a href="http://puredata.info">Pure Data</a>.  Integra Modules are stored 
 in '.module' files, which contain both the module's interface and pd implementation.  For more information about modules, 
-see the <a href="http://www.integralive.org/tutorials/module-development-guide/#what-is-a-module">module development guide</a>.
+see the <a href="http://www.integralive.org/tutorials">module development guide</a>.
 \note There are a few core control/logic modules which are implemented directly in libIntegra, not pd.  However, 
 users of libIntegra can use any modules without needing to know whether they are implemented in pd or libIntegra.
 
@@ -139,7 +139,7 @@ application might interact with libIntegra:
 
 | Application                  | libIntegra    
 | ---------------------------- | ------------- --------------------------------------------------------------------------------------------------------
-| Startup		               | Populate a CServerStartupInfo, Create a CIntegraSession, call CIntegraSession::start_session.
+| Startup		                   | Populate a CServerStartupInfo, Create a CIntegraSession, call CIntegraSession::start_session.
 | Updating views               | Call CIntegraSession::get_server, use the methods on IServer to query libIntegra and update views.
 | Responding to user input     | Call CIntegraSession::get_server, use IServer::process_command to update libIntegra as required.
 | Idle pump or continual timer | Use CPollingNotificationSink to poll for changes to libIntegra's internal state, update views accordingly. 
